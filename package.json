@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "json-server": "node json-server/server.js"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +22,9 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "chart.js": "^4.4.4",
+    "json-server": "^1.0.0-beta.2",
     "primeng": "^17.18.9",
+    "roboto-fontface": "^0.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
