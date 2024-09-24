@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "john@example.com",
+      "password": "Azerty",
+      "name": "John Doe"
+    }
+  ],
+  "generalCategories": [
+    {
+      "id": 1,
+      "name": "Shopping"
+    },
+    {
+      "id": 2,
+      "name": "Loisirs"
+    },
+    {
+      "id": 3,
+      "name": "Restaurant"
+    }
+  ],
+  "userCategories": [
+    {
+      "id": 1,
+      "name": "Investments",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Health",
+      "userId": 2
+    }
+  ],
+    "expenses": [
+    {
+      "id": 1,
+      "name": "Franprix",
+      "amount": -15.99,
+      "category": "Shopping",
+      "userId": 1
+    }    
+  ]
+}
