@@ -8,8 +8,15 @@ import { User } from '../shared/model.shared';
 })
 export class AuthService {
   private apiUrl = API_BASE_URL + '/auth/';
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   
+  isLoggedIn(): boolean {
+    if (localStorage.getItem('currentUser')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   login(user:User):Observable<User> {
     return this.http.post<User>(this.apiUrl + 'login', {
       email: user.email,
@@ -33,4 +40,5 @@ export class AuthService {
       return user;
     }));
   }
+  
 }
