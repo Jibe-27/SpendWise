@@ -13,5 +13,13 @@
             "EMAIL":"Email",
             "PASSWORD":"Password"
         }
+    },
+    "LANGUAGE":{
+        "EN":"English",
+        "FR":"French",
+        "DE":"German",
+        "ES":"Spanish",
+        "AR":"Arabic",
+        "SELECT_LANGUAGE": "Select a Language"
     }
 }

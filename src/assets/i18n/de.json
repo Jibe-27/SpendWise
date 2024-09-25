@@ -1,0 +1,25 @@
+{
+    "COMMON": {
+        "LOGIN": "Anmelden",
+        "REGISTER": "Registrieren"
+    },
+    "AUTH": {
+        "LOGIN_SUCCESS": "Anmeldung erfolgreich",
+        "LOGIN_FAILED": "Anmeldung fehlgeschlagen",
+        "REGISTER_SUCCESS": "Registrierung erfolgreich",
+        "REGISTER_FAILED": "Registrierung fehlgeschlagen",
+        "FORM": {
+            "NAME": "Name",
+            "EMAIL": "E-Mail",
+            "PASSWORD": "Passwort"
+        }
+    },
+    "LANGUAGE": {
+        "EN": "Englisch",
+        "FR": "Französisch",
+        "DE": "Deutsch",
+        "ES": "Spanisch",
+        "AR": "Arabisch",
+        "SELECT_LANGUAGE": "Sprache auswählen"
+    }
+}
