@@ -1,0 +1,60 @@
+{
+    "categories": [
+      {
+        "id": 2,
+        "name": "Restaurant"
+      },
+      {
+        "id": 3,
+        "name": "Transport"
+      },
+      {
+        "id": 4,
+        "name": "Shopping"
+      }
+    ],
+    "expenses": [
+      {
+        "id": 3,
+        "amount": 30,
+        "date": "2023-10-02",
+        "categoryId": 2,
+        "merchant": "McDonald's"
+      },
+      {
+        "id": 4,
+        "amount": 20,
+        "date": "2023-10-04",
+        "categoryId": 2,
+        "merchant": "Starbucks"
+      },
+      {
+        "id": 5,
+        "amount": 15,
+        "date": "2023-10-01",
+        "categoryId": 3,
+        "merchant": "Uber"
+      },
+      {
+        "id": 6,
+        "amount": 15,
+        "date": "2023-10-05",
+        "categoryId": 3,
+        "merchant": "Navigo"
+      },
+      {
+        "id": 7,
+        "amount": 100,
+        "date": "2023-10-04",
+        "categoryId": 4,
+        "merchant": "H&M"
+      },
+      {
+        "id": 8,
+        "amount": 20,
+        "date": "2023-10-06",
+        "categoryId": 4,
+        "merchant": "Zara"
+      }
+    ]
+  }

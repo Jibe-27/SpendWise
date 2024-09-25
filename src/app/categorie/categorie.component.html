@@ -1,0 +1,18 @@
+<div id="categories-container"></div>
+<canvas id="canvas"></canvas>
+<canvas id="canva1"></canvas>
+   
+  <div class="divtab">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let categorie of  tabdepenses">
+      <th>{{categorie.merchant}}</th>
+      <th> -{{categorie.amount}} €</th>     
+    </tr>
+  </table>
+
+</div>
