@@ -1,31 +1,36 @@
 import { Injectable } from '@angular/core';
 import { API_BASE_URL } from '../shared/constant.shared';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../shared/user.model';
-import { Observable } from 'rxjs';
-
+import { map, Observable } from 'rxjs';
+import { User } from '../shared/model.shared';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = API_BASE_URL + '/auth';
+  private apiUrl = API_BASE_URL + '/auth/';
   constructor(private http:HttpClient) { }
   
-  login(email:string, password:string):Observable<User> {
-    return this.http.get<User>(this.apiUrl + 'login', {
-      params: {
-        email: email,
-        password: password
+  login(user:User):Observable<User> {
+    return this.http.post<User>(this.apiUrl + 'login', {
+      email: user.email,
+      password: user.password
+    }).pipe(map(user => {
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
       }
-    });
+      return user;
+    }));
   }
   register(user:User):Observable<User> {
     return this.http.post<User>(this.apiUrl + 'register', {
-      params: {
-        email: user.email,
-        password: user.password,
-        name: user.name
+      email: user.email,
+      password: user.password,
+      name: user.name
+    }).pipe(map(user => {
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
       }
-    });
+      return user;
+    }));
   }
 }

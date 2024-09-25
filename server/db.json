@@ -33,13 +33,13 @@
       "userId": 2
     }
   ],
-    "expenses": [
+  "expenses": [
     {
       "id": 1,
       "name": "Franprix",
       "amount": -15.99,
       "category": "Shopping",
       "userId": 1
-    }    
+    }
   ]
 }
