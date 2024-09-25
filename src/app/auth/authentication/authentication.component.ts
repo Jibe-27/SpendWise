@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../../shared/constant.shared';
-import { Language } from '../../shared/model.shared';
+import { Language, User } from '../../shared/model.shared';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -16,7 +17,7 @@ export class AuthenticationComponent implements OnInit{
   languages: Language[] = LANGUAGES;
   selectedLanguage: string;
 
-  constructor(private notificationService: NotificationService, private translateService: TranslateService) { 
+  constructor(private notificationService: NotificationService, private translateService: TranslateService,private authService:AuthService) { 
     this.selectedLanguage = translateService.getDefaultLang();
     this.languageInit();
   }
@@ -39,7 +40,31 @@ export class AuthenticationComponent implements OnInit{
 
   onSubmit(): void {
     if (this.form.valid) { 
+      const user: User = {
+        email: this.form.controls['email'].value,
+        password: this.form.controls['password'].value,
+        name: this.form.controls['name']?.value ??""
+      }
 
+      if (!this.isSignIn) {
+        this.authService.login(user).subscribe({
+          next: res => {
+            this.notificationService.success("AUTH.LOGIN_SUCCESS");
+          },
+          error: err => {
+            this.notificationService.error("AUTH.LOGIN_FAILED");
+          }
+        });
+      } else {
+        this.authService.register(user).subscribe({
+          next: res => {
+            this.notificationService.success("AUTH.REGISTER_SUCCESS");
+          },
+          error: err => {
+            this.notificationService.error("AUTH.REGISTER_FAILED");
+          }
+        });
+      }
     } else {
       if (this.isSignIn) {
         this.notificationService.error("AUTH.REGISTER_FAILED");

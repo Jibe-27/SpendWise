@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('./db.json');
+const router = jsonServer.router('./server/db.json');
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
@@ -26,7 +26,7 @@ server.post('/auth/login', (req, res) => {
     res.status(404).json({ error: 'user not found' });
   }
 });
-server.post('/auth/signin', (req, res) => {
+server.post('/auth/register', (req, res) => {
   const { email, password, name } = req.body;
   const db = router.db;
   const newUser = { id: Date.now(), email, password, name };
