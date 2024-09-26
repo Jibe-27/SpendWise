@@ -13,36 +13,34 @@
           </div>
         </div>
         <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-bold">Line Chart</h3>
-                <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
-            </div>
-            <div class="chart-container mt-4 h-full">
-                <p-chart type="line" [data]="data" [options]="options" style="height: 100%;"></p-chart>
-            </div>
-        </div>
-
-        <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
-            <h3 class="text-xl font-bold mb-4">Expenses by Category</h3>
-            <ul>
-              <li *ngFor="let expense of expenses" class="mb-4">
-                <div class="flex items-center mb-2">
-                  <i [class]="expense.icon" [style.color]="expense.color" class="text-2xl mr-2"></i>
-                  <span class="flex-1">{{ expense.category }}</span>
-                  <span class="text-gray-600">{{ getRandomPercentage() }}%</span>
-                </div>
-                <p-progressBar [value]="getRandomPercentage()" [style]="{height: '10px', width: '100%'}"></p-progressBar>
-              </li>
-            </ul>
+          <div class="flex justify-between items-center">
+            <h3 class="text-xl font-bold">Line Chart</h3>
+            <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
           </div>
-
+          <div class="chart-container mt-4 h-full">
+            <p-chart type="line" [data]="data" [options]="options" style="height: 100%;"></p-chart>
+          </div>
+        </div>
+        <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
+          <h3 class="text-xl font-bold mb-4">Expenses by Category</h3>
+          <ul>
+            <li *ngFor="let expense of expenses" class="mb-4">
+              <div class="flex items-center mb-2">
+                <i [class]="expense.icon" [style.color]="expense.color" class="text-2xl mr-2"></i>
+                <span class="flex-1">{{ expense.category }}</span>
+                <span class="text-gray-600">{{ getRandomPercentage() }}%</span>
+              </div>
+              <p-progressBar [value]="getRandomPercentage()" [style]="{height: '10px', width: '100%'}"></p-progressBar>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- Colonne de droite -->
       <div class="w-1/2 pl-4">
-        <div class="card bg-white p-4 rounded-lg shadow-md mb-4 " >
+        <div class="card bg-white p-4 rounded-lg shadow-md mb-4">
           <div class="flex justify-between items-center">
             <h3 class="text-xl font-bold">Doughnut Chart</h3>
-            <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
+            <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
           </div>
           <div class="chart-container mt-4 h-full">
             <p-chart type="doughnut" [data]="data" [options]="options" style="height: 50%;"></p-chart>
@@ -68,4 +66,32 @@
         </div>
       </div>
     </div>
+  
+    <!-- Modal Dialog -->
+    <p-dialog header="Add Expense" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: '30vw'}">
+      <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="category">Category</label>
+            <input id="category" type="text" pInputText formControlName="category" />
+          </div>
+          <div class="p-field">
+            <label for="amount">Amount</label>
+            <input id="amount" type="number" pInputText formControlName="amount" />
+          </div>
+          <div class="p-field">
+            <label for="color">Color</label>
+            <input id="color" type="text" pInputText formControlName="color" />
+          </div>
+          <div class="p-field">
+            <label for="icon">Icon</label>
+            <input id="icon" type="text" pInputText formControlName="icon" />
+          </div>
+        </div>
+        <div class="p-dialog-footer">
+          <button pButton type="button" label="Cancel" icon="pi pi-times" (click)="displayModal=false"></button>
+          <button pButton type="submit" label="Add" icon="pi pi-check" [disabled]="expenseForm.invalid"></button>
+        </div>
+      </form>
+    </p-dialog>
   </div>

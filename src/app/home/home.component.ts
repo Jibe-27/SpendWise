@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Expense {
   date: string;
@@ -20,10 +21,24 @@ export class HomeComponent implements OnInit {
   public options: any;
   public expenses: Expense[] = [];
   public totalExpenses: number = 0;
+  public displayModal: boolean = false;
+  public expenseForm: FormGroup;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {
+    this.expenseForm = this.fb.group({
+      category: ['', Validators.required],
+      amount: ['', [Validators.required, Validators.min(0)]],
+      color: ['', Validators.required],
+      icon: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
+    this.initializeExpenses();
+    this.initializeChartData();
+  }
+
+  private initializeExpenses(): void {
     this.expenses = [
       {
         date: '2024-09-01',
@@ -74,7 +89,9 @@ export class HomeComponent implements OnInit {
     this.expenses.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
+  }
 
+  private initializeChartData(): void {
     this.data = {
       labels: [
         'Loyer',
@@ -108,5 +125,17 @@ export class HomeComponent implements OnInit {
 
   getRandomPercentage(): number {
     return Math.floor(Math.random() * 100) + 1;
+  }
+
+  addExpense(): void {
+    if (this.expenseForm.valid) {
+      this.expenses.push(this.expenseForm.value);
+      this.displayModal = false;
+      this.expenseForm.reset();
+    }
+  }
+
+  showModalDialog(): void {
+    this.displayModal = true;
   }
 }

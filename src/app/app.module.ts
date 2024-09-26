@@ -18,6 +18,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { HomeComponent } from './home/home.component';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ChartModule,
     TableModule,
+    DialogModule,
     ToastModule,
     ButtonModule,
     ProgressBarModule,
