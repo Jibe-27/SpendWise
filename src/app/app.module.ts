@@ -15,6 +15,9 @@ import { MessageService } from 'primeng/api';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { HomeComponent } from './home/home.component';
+import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng/table';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    NotificationComponent
+    NotificationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,19 +37,21 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ChartModule,
+    TableModule,
     ToastModule,
     ButtonModule,
     ProgressBarModule,
-    DropdownModule, 
+    DropdownModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
   ],
   providers: [MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
