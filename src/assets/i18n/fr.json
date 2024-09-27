@@ -1,7 +1,9 @@
 {
     "COMMON": {
         "LOGIN": "Connexion",
-        "REGISTER": "Inscription"
+        "REGISTER": "Inscription",
+        "CANCEL": "Annuler",
+        "ADD": "Ajouter"
     },
     "AUTH": {
         "LOGIN_SUCCESS": "Connexion réussie",
@@ -14,6 +16,20 @@
             "PASSWORD": "Mot de passe"
         }
     },
+    "HOME": {
+      "EXPENSES": "Dépenses",
+      "REVENUES": "Revenus",
+      "LINE_CHART": "Graphique en ligne",
+      "DOUGHNUT_CHART": "Diagramme circulaire",
+      "EXPENSES_BY_CATEGORY": "Dépenses par catégorie",
+      "TOTAL": "Total",
+      "ADD_EXPENSE": "Ajouter une dépense",
+      "CATEGORY": "Catégorie",
+      "AMOUNT": "Montant",
+      "COLOR": "Couleur",
+      "ICON": "Icône"
+    },
+      
     "LANGUAGE": {
         "EN": "Anglais",
         "FR": "Français",

@@ -1,7 +1,9 @@
 {
     "COMMON":{
         "LOGIN":"Login",
-        "REGISTER":"Register"
+        "REGISTER":"Register",
+         "CANCEL": "Cancel",
+    "ADD": "Add"
     },
     "AUTH":{
         "LOGIN_SUCCESS":"Login Success",
@@ -14,6 +16,19 @@
             "PASSWORD":"Password"
         }
     },
+    "HOME": {
+        "EXPENSES": "Expenses",
+        "REVENUES": "Revenues",
+        "LINE_CHART": "Line Chart",
+        "DOUGHNUT_CHART": "Doughnut Chart",
+        "EXPENSES_BY_CATEGORY": "Expenses by Category",
+        "TOTAL": "Total",
+        "ADD_EXPENSE": "Add Expense",
+        "CATEGORY": "Category",
+        "AMOUNT": "Amount",
+        "COLOR": "Color",
+        "ICON": "Icon"
+      },
     "LANGUAGE":{
         "EN":"English",
         "FR":"French",
@@ -23,3 +38,4 @@
         "SELECT_LANGUAGE": "Select a Language"
     }
 }
+

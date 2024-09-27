@@ -5,20 +5,20 @@
       <div class="flex flex-col space-y-4 mt-20">
         <div class="w-full">
           <div class="card bg-red-400 p-8 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-2">Dépenses</h3>
+            <h3 class="text-2xl font-bold mb-2">{{ 'HOME.EXPENSES' | translate }}</h3>
             <p class="text-3xl font-bold">2555 €</p>
           </div>
         </div>
         <div class="w-full">
           <div class="card bg-green-400 p-8 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-2">Revenus</h3>
+            <h3 class="text-2xl font-bold mb-2">{{ 'HOME.REVENUES' | translate }}</h3>
             <p class="text-3xl font-bold">500 €</p>
           </div>
         </div>
       </div>
       <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
         <div class="flex justify-between items-center">
-          <h3 class="text-xl font-bold">Line Chart</h3>
+          <h3 class="text-xl font-bold">{{ 'HOME.LINE_CHART' | translate }}</h3>
           <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
         </div>
         <div class="chart-container mt-4 h-full">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
-        <h3 class="text-xl font-bold mb-4">Expenses by Category</h3>
+        <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES_BY_CATEGORY' | translate }}</h3>
         <ul>
           <li *ngFor="let expense of expenses" class="mb-4">
             <div class="flex items-center mb-2">
@@ -43,19 +43,19 @@
     <div class="w-full md:w-1/2 pl-0 md:pl-4 mt-4 md:mt-0">
       <div class="card bg-white p-4 rounded-lg shadow-md mt-12 mb-4">
         <div class="flex justify-between items-center">
-          <h3 class="text-xl font-bold">Doughnut Chart</h3>
+          <h3 class="text-xl font-bold">{{ 'HOME.DOUGHNUT_CHART' | translate }}</h3>
           <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
         </div>
         <div class="chart-container mt-4 h-full">
           <p-chart type="doughnut" [data]="data" [options]="options" style="height: 50%;"></p-chart>
           <div class="chart-label">
-            <div>Total</div>
+            <div>{{ 'HOME.TOTAL' | translate }}</div>
             <div>25555</div>
           </div>
         </div>
       </div>
       <div class="card bg-white p-4 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-4">Expenses</h3>
+        <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES' | translate }}</h3>
         <p-table [value]="expenses" [tableStyle]="{ 'min-width': '50rem' }" [scrollable]="true" [scrollHeight]="'200px'">
           <ng-template pTemplate="body" let-expense let-rowIndex="rowIndex">
             <tr>
@@ -72,29 +72,29 @@
   </div>
 
   <!-- Modal Dialog -->
-  <p-dialog header="Add Expense" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: '30vw'}">
+  <p-dialog header="{{ 'HOME.ADD_EXPENSE' | translate }}" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: '30vw'}">
     <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
       <div class="p-fluid">
         <div class="p-field">
-          <label for="category">Category</label>
+          <label for="category">{{ 'HOME.CATEGORY' | translate }}</label>
           <input id="category" type="text" pInputText formControlName="category" />
         </div>
         <div class="p-field">
-          <label for="amount">Amount</label>
+          <label for="amount">{{ 'HOME.AMOUNT' | translate }}</label>
           <input id="amount" type="number" pInputText formControlName="amount" />
         </div>
         <div class="p-field">
-          <label for="color">Color</label>
+          <label for="color">{{ 'HOME.COLOR' | translate }}</label>
           <input id="color" type="text" pInputText formControlName="color" />
         </div>
         <div class="p-field">
-          <label for="icon">Icon</label>
+          <label for="icon">{{ 'HOME.ICON' | translate }}</label>
           <input id="icon" type="text" pInputText formControlName="icon" />
         </div>
       </div>
       <div class="p-dialog-footer">
-        <button pButton type="button" label="Cancel" icon="pi pi-times" (click)="displayModal=false"></button>
-        <button pButton type="submit" label="Add" icon="pi pi-check" [disabled]="expenseForm.invalid"></button>
+        <button pButton type="button" label="{{ 'COMMON.CANCEL' | translate }}" icon="pi pi-times" (click)="displayModal=false"></button>
+        <button pButton type="submit" label="{{ 'COMMON.ADD' | translate }}" icon="pi pi-check" [disabled]="expenseForm.invalid"></button>
       </div>
     </form>
   </p-dialog>

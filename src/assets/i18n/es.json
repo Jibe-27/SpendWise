@@ -1,7 +1,9 @@
 {
     "COMMON": {
         "LOGIN": "Iniciar sesión",
-        "REGISTER": "Registrarse"
+        "REGISTER": "Registrarse",
+      "CANCEL": "Cancelar",
+      "ADD": "Añadir"
     },
     "AUTH": {
         "LOGIN_SUCCESS": "Inicio de sesión exitoso",
@@ -13,6 +15,19 @@
             "EMAIL": "Correo electrónico",
             "PASSWORD": "Contraseña"
         }
+    },
+    "HOME": {
+      "EXPENSES": "Gastos",
+      "REVENUES": "Ingresos",
+      "LINE_CHART": "Gráfico de líneas",
+      "DOUGHNUT_CHART": "Gráfico de rosquilla",
+      "EXPENSES_BY_CATEGORY": "Gastos por categoría",
+      "TOTAL": "Total",
+      "ADD_EXPENSE": "Añadir gasto",
+      "CATEGORY": "Categoría",
+      "AMOUNT": "Monto",
+      "COLOR": "Color",
+      "ICON": "Ícono"
     },
     "LANGUAGE": {
         "EN": "Inglés",
