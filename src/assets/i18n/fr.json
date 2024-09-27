@@ -1,17 +1,25 @@
 {
-    "COMMON":{
-        "LOGIN":"Login",
-        "REGISTER":"Register"
+    "COMMON": {
+        "LOGIN": "Connexion",
+        "REGISTER": "Inscription"
     },
-    "AUTH":{
-        "LOGIN_SUCCESS":"Login Success",
-        "LOGIN_FAILED":"Login Failed",
-        "REGISTER_SUCCESS":"Register Success",
-        "REGISTER_FAILED":"Register Failed",
-        "FORM":{
-            "NAME":"Name",
-            "EMAIL":"Email",
-            "PASSWORD":"Password"
+    "AUTH": {
+        "LOGIN_SUCCESS": "Connexion réussie",
+        "LOGIN_FAILED": "Échec de la connexion",
+        "REGISTER_SUCCESS": "Inscription réussie",
+        "REGISTER_FAILED": "Échec de l'inscription",
+        "FORM": {
+            "NAME": "Nom",
+            "EMAIL": "Email",
+            "PASSWORD": "Mot de passe"
         }
+    },
+    "LANGUAGE": {
+        "EN": "Anglais",
+        "FR": "Français",
+        "DE": "Allemand",
+        "ES": "Espagnol",
+        "AR": "Arabe",
+        "SELECT_LANGUAGE": "Sélectionnez une langue"
     }
 }

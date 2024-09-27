@@ -1,0 +1,25 @@
+{
+    "COMMON": {
+        "LOGIN": "Iniciar sesión",
+        "REGISTER": "Registrarse"
+    },
+    "AUTH": {
+        "LOGIN_SUCCESS": "Inicio de sesión exitoso",
+        "LOGIN_FAILED": "Error al iniciar sesión",
+        "REGISTER_SUCCESS": "Registro exitoso",
+        "REGISTER_FAILED": "Error al registrarse",
+        "FORM": {
+            "NAME": "Nombre",
+            "EMAIL": "Correo electrónico",
+            "PASSWORD": "Contraseña"
+        }
+    },
+    "LANGUAGE": {
+        "EN": "Inglés",
+        "FR": "Francés",
+        "DE": "Alemán",
+        "ES": "Español",
+        "AR": "Árabe",
+        "SELECT_LANGUAGE": "Selecciona un idioma"
+    }
+}
