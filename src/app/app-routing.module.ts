@@ -8,12 +8,16 @@ import { authenticationGuard } from './auth/authentication/authentication.guard'
 const routes: Routes = [
   { path: 'auth', component: AuthenticationComponent },
   {
-    path: '',
-    component: CategorieComponent,
+    path: 'home',
+    component: HomeComponent,
     canActivate: [authenticationGuard],
   },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

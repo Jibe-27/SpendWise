@@ -40,6 +40,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ToastModule,
     ButtonModule,
+    DialogModule,
+    TableModule,
+    ChartModule,
     ProgressBarModule,
     DropdownModule,
     TranslateModule.forRoot({
