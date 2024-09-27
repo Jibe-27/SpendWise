@@ -1,0 +1,33 @@
+<!-- modal-form.component.html -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Ajouter une nouvelle catégorie</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nom</label>
+        <input id="name" formControlName="name">
+      </div>
+      <div>
+        <label for="color">Couleur</label>
+        <input id="color" type="color" formControlName="color">
+      </div>
+      <div>
+        <label for="icon">Icône</label>
+        <div class="icon-grid">
+          <div *ngFor="let icon of svgIcons" class="icon-item">
+            <input type="radio" id="{{icon.name}}" formControlName="icon" [value]="icon.path">
+            <label for="{{icon.name}}">
+              <img [src]="icon.path" [style.filter]="'drop-shadow(0 0 0 ' + getIconColor() + ')'">
+              <div>{{icon.name}}</div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="button" (click)="closeModal()">Annuler</button>
+        <button type="submit" [disabled]="categoryForm.invalid">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>
