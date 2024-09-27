@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-interface Expense {
-  date: string;
-  category: string;
-  store: string;
-  amount: number;
-  description: string;
-  color: string;
-  icon: string;
-}
+import { ExpenseService } from '../home/expense.service';
+import { Expense, Category } from '../shared/model.shared';
 
 @Component({
   selector: 'app-home',
@@ -20,96 +12,61 @@ export class HomeComponent implements OnInit {
   public data: any;
   public options: any;
   public expenses: Expense[] = [];
+  public categories: Category[] = [];
   public totalExpenses: number = 0;
   public displayModal: boolean = false;
   public expenseForm: FormGroup;
+  private userId: number = 1; // Assuming user ID is 1 for this example
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private expenseService: ExpenseService) {
     this.expenseForm = this.fb.group({
       category: ['', Validators.required],
+      store: ['', Validators.required],
       amount: ['', [Validators.required, Validators.min(0)]],
-      color: ['', Validators.required],
-      icon: ['', Validators.required],
+      description: [''],
     });
   }
 
   ngOnInit(): void {
-    this.initializeExpenses();
+    this.loadExpenses();
+    this.loadCategories();
     this.initializeChartData();
   }
 
-  private initializeExpenses(): void {
-    this.expenses = [
-      {
-        date: '2024-09-01',
-        category: 'Loyer',
-        store: 'Supermarché',
-        amount: 1200,
-        description: 'Loyer mensuel',
-        color: '#4BC0C0',
-        icon: 'pi pi-ellipsis-h',
-      },
-      {
-        date: '2024-09-05',
-        category: 'Courses',
-        amount: 200,
-        store: 'Cinéma',
-        description: 'Courses hebdomadaires',
-        color: '#FF9F40',
-        icon: 'pi pi-film',
-      },
-      {
-        date: '2024-09-10',
-        category: 'Services publics',
-        amount: 100,
-        store: 'EDF',
-        description: "Facture d'électricité",
-        color: '#FFCE56',
-        icon: 'pi pi-bolt',
-      },
-      {
-        date: '2024-09-15',
-        category: 'Divertissement',
-        amount: 50,
-        store: 'Propriétaire',
-        description: 'Cinéma',
-        color: '#FF9F40',
-        icon: 'pi pi-film',
-      },
-      {
-        date: '2024-09-20',
-        category: 'Autres',
-        amount: 150,
-        store: 'Restaurant',
-        description: 'Achat divers',
-        color: '#4BC0C0',
-        icon: 'pi pi-ellipsis-h',
-      },
-    ];
-    this.expenses.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  private loadExpenses(): void {
+    this.expenseService.getExpenses(this.userId).subscribe((expenses) => {
+      this.expenses = expenses;
+      this.calculateTotalExpenses();
+    });
+  }
+
+  private loadCategories(): void {
+    this.expenseService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
+    this.expenseService
+      .getUserCategories(this.userId)
+      .subscribe((categories) => {
+        this.categories = [...this.categories, ...categories];
+      });
+  }
+
+  private calculateTotalExpenses(): void {
+    this.totalExpenses = this.expenses.reduce(
+      (sum, expense) => sum + expense.amount,
+      0
     );
   }
 
   private initializeChartData(): void {
     this.data = {
-      labels: [
-        'Loyer',
-        'Courses',
-        'Services publics',
-        'Divertissement',
-        'Autres',
-      ],
+      labels: this.expenses.map((expense) => expense.category.name),
       datasets: [
         {
-          data: [300, 500, 100, 200, 150],
-          backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#FF9F40',
-            '#4BC0C0',
-          ],
+          data: this.expenses.map((expense) => expense.amount),
+          backgroundColor: this.expenses.map(
+            (expense) => expense.category.color
+          ),
         },
       ],
     };
@@ -123,15 +80,25 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  getRandomPercentage(): number {
-    return Math.floor(Math.random() * 100) + 1;
-  }
-
   addExpense(): void {
     if (this.expenseForm.valid) {
-      this.expenses.push(this.expenseForm.value);
-      this.displayModal = false;
-      this.expenseForm.reset();
+      const formValues = this.expenseForm.value;
+      const selectedCategory = this.categories.find(
+        (cat) => cat.name === formValues.category
+      );
+      const newExpense: Expense = {
+        datetime: new Date().toISOString(),
+        category: selectedCategory!,
+        store: formValues.store,
+        amount: formValues.amount,
+        description: formValues.description,
+      };
+      this.expenseService.addExpense(newExpense).subscribe((expense) => {
+        this.expenses.push(expense);
+        this.calculateTotalExpenses();
+        this.displayModal = false;
+        this.expenseForm.reset();
+      });
     }
   }
 
