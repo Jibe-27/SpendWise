@@ -4,41 +4,73 @@
       "id": 1,
       "email": "john@example.com",
       "password": "Azerty",
-      "name": "John Doe"
+      "name": "John Doe",
+      "budget": 1000,
+      "initialBudget": 1000
     }
   ],
   "generalCategories": [
     {
       "id": 1,
-      "name": "Shopping"
+      "name": "Shopping",
+      "color": "#FF6384",
+      "icon": "pi pi-shopping-cart"
     },
     {
       "id": 2,
-      "name": "Loisirs"
+      "name": "Loisirs",
+      "color": "#36A2EB",
+      "icon": "pi pi-star"
     },
     {
       "id": 3,
-      "name": "Restaurant"
+      "name": "Restaurant",
+      "color": "#FFCE56",
+      "icon": "pi pi-cutlery"
     }
   ],
   "userCategories": [
     {
       "id": 1,
       "name": "Investments",
-      "userId": 1
+      "userId": 1,
+      "color": "#4BC0C0",
+      "icon": "pi pi-chart-line"
     },
     {
       "id": 2,
       "name": "Health",
-      "userId": 2
+      "userId": 1,
+      "color": "#FF9F40",
+      "icon": "pi pi-heart"
     }
   ],
   "expenses": [
     {
       "id": 1,
-      "name": "Franprix",
-      "amount": -15.99,
+      "date": "2024-09-01T10:00:00Z",
       "category": "Shopping",
+      "store": "Franprix",
+      "amount": -15.99,
+      "description": "Groceries",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "date": "2024-09-05T14:00:00Z",
+      "category": "Loisirs",
+      "store": "Cinema",
+      "amount": -20.00,
+      "description": "Movie night",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "date": "2024-09-10T08:00:00Z",
+      "category": "Restaurant",
+      "store": "McDonald's",
+      "amount": -30.00,
+      "description": "Lunch",
       "userId": 1
     }
   ]
