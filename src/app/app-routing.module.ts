@@ -10,7 +10,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [authenticationGuard],
+    canActivate: [authenticationGuard],
+  },
+  {
+    path: 'categories',
+    component: CategorieComponent,
+    canActivate: [authenticationGuard],
   },
   {
     path: '',

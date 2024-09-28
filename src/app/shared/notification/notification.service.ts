@@ -16,7 +16,7 @@ export class NotificationService {
   ) {}
 
   private async addNotification(severity: string, summary: string, detail: string) {
-    detail=this.translate.instant(detail);
+    detail = this.translate.instant(detail);
     this.messageService.add({ severity, summary, detail, life: this.notificationDuration });
   }
 

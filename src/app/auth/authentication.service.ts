@@ -40,5 +40,7 @@ export class AuthService {
       return user;
     }));
   }
-  
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
 }

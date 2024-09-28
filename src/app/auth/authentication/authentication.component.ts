@@ -5,6 +5,7 @@ import { Language, User } from '../../shared/model.shared';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -20,7 +21,8 @@ export class AuthenticationComponent implements OnInit {
   constructor(
     private notificationService: NotificationService,
     private translateService: TranslateService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.selectedLanguage = translateService.getDefaultLang();
     this.languageInit();
@@ -54,19 +56,21 @@ export class AuthenticationComponent implements OnInit {
 
       if (!this.isSignIn) {
         this.authService.login(user).subscribe({
-          next: (res) => {
+          next: () => {
             this.notificationService.success('AUTH.LOGIN_SUCCESS');
+            this.router.navigate(['/']);
           },
-          error: (err) => {
+          error: () => {
             this.notificationService.error('AUTH.LOGIN_FAILED');
           },
         });
       } else {
         this.authService.register(user).subscribe({
-          next: (res) => {
+          next: () => {
             this.notificationService.success('AUTH.REGISTER_SUCCESS');
+            this.router.navigate(['/']);
           },
-          error: (err) => {
+          error: () => {
             this.notificationService.error('AUTH.REGISTER_FAILED');
           },
         });
