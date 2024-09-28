@@ -1,0 +1,31 @@
+<div *ngIf="expense" class="expense-details p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-semibold mb-4">Détails de la dépense</h2>
+    <div class="mb-2">
+        <label for="expense-name" class="font-bold">Nom:</label>
+        <span id="expense-name" class="ml-2">{{ expense.description }}</span>
+    </div>
+    <div class="mb-2">
+        <label for="expense-amount" class="font-bold">Montant:</label>
+        <span id="expense-amount" class="ml-2">{{ expense.amount | currency }}</span>
+    </div>
+    <div class="mb-2">
+        <label for="expense-date" class="font-bold">Date:</label>
+        <span id="expense-date" class="ml-2">{{ expense.datetime | date: 'fullDate' }}</span>
+    </div>
+    <div class="mb-2">
+        <label for="expense-category" class="font-bold">Catégorie:</label>
+        <span id="expense-category" class="ml-2">{{ expense.category }}</span>
+    </div>
+    <div class="mb-6">
+        <label for="expense-description" class="font-bold">Description:</label>
+        <span id="expense-description" class="ml-2">{{ expense.description }}</span>
+    </div>
+
+    <!-- Bouton pour retourner à la page d'accueil -->
+    <div class="mt-6">
+        <button (click)="navigateToHome()"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Retour à l'accueil
+        </button>
+    </div>
+</div>

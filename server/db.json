@@ -48,7 +48,7 @@
   "expenses": [
     {
       "id": 1,
-      "date": "2024-09-01T10:00:00Z",
+      "datetime": "2024-09-01T10:00:00Z",
       "category": "Shopping",
       "store": "Franprix",
       "amount": -15.99,
@@ -57,21 +57,34 @@
     },
     {
       "id": 2,
-      "date": "2024-09-05T14:00:00Z",
+      "datetime": "2024-09-05T14:00:00Z",
       "category": "Loisirs",
       "store": "Cinema",
-      "amount": -20.00,
+      "amount": -20,
       "description": "Movie night",
       "userId": 1
     },
     {
       "id": 3,
-      "date": "2024-09-10T08:00:00Z",
+      "datetime": "2024-09-10T08:00:00Z",
       "category": "Restaurant",
       "store": "McDonald's",
-      "amount": -30.00,
+      "amount": -30,
       "description": "Lunch",
       "userId": 1
+    },
+    {
+      "id": 1727539976186,
+      "category": {
+        "id": 1,
+        "name": "Investments",
+        "userId": 1,
+        "color": "#4BC0C0",
+        "icon": "pi pi-chart-line"
+      },
+      "store": "stet",
+      "amount": 7,
+      "description": "dedededd"
     }
   ]
 }

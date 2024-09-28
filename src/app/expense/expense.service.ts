@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Expense, Category } from '../shared/model.shared';
 
 @Injectable({
@@ -12,7 +12,19 @@ export class ExpenseService {
   constructor(private http: HttpClient) {}
 
   getExpenses(userId: number): Observable<Expense[]> {
-    return this.http.get<Expense[]>(`${this.apiUrl}/expenses?userId=${userId}`);
+    return this.http.get<Expense[]>(
+      `${this.apiUrl}/expenses/user/?userId=${userId}`
+    );
+  }
+
+  getExpense(id: number): Observable<Expense> {
+    return this.http
+      .get<Expense[]>(`${this.apiUrl}/expenses/${id}`)
+      .pipe(
+        map((response: any) =>
+          Array.isArray(response) ? response[0] : response
+        )
+      );
   }
 
   addExpense(expense: Expense): Observable<Expense> {

@@ -21,6 +21,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { AddCategorieComponent } from './add-categorie/add-categorie.component';
+import { ExpenseComponent } from './expense/expense.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +35,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     NotificationComponent,
     ModalFormComponent,
-    AddCategorieComponent
+    AddCategorieComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,

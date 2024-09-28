@@ -50,7 +50,7 @@ server.post('/auth/register', (req, res) => {
 });
 
 // Route pour obtenir les dépenses d'un utilisateur
-server.get('/expenses/:userId', (req, res) => {
+server.get('/expenses/user/:userId', (req, res) => {
   const db = router.db;
   const expenses = db
     .get('expenses')
@@ -80,6 +80,19 @@ server.post('/expenses', (req, res) => {
     res.status(404).json({ error: 'Expense could not be created' });
   }
 });
+
+// Route pour afficher une depense
+server.get('/expenses/:id', (req, res) => {
+  const db = router.db;
+  const expense = db
+    .get('expenses')
+    .find({ id: parseInt(req.params.id) })
+    .value();
+  console.log(expense);
+  res.json(expense);
+});
+
+
 
 server.use(router);
 

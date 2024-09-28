@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ExpenseService } from '../home/expense.service';
+import { ExpenseService } from '../expense/expense.service';
 import { Expense, Category } from '../shared/model.shared';
 
 @Component({
@@ -9,13 +9,13 @@ import { Expense, Category } from '../shared/model.shared';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public data: any;
-  public options: any;
-  public expenses: Expense[] = [];
-  public categories: Category[] = [];
-  public totalExpenses: number = 0;
-  public displayModal: boolean = false;
-  public expenseForm: FormGroup;
+  data: any;
+  options: any;
+  expenses: Expense[] = [];
+  categories: Category[] = [];
+  totalExpenses: number = 0;
+  displayModal: boolean = false;
+  expenseForm: FormGroup;
   private userId: number = 1; // Assuming user ID is 1 for this example
 
   constructor(private fb: FormBuilder, private expenseService: ExpenseService) {
@@ -58,13 +58,13 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  public getTotalByCategory(categoryName: string): number {
+  getTotalByCategory(categoryName: string): number {
     return this.expenses
       .filter((expense) => expense.category.name === categoryName)
       .reduce((sum, expense) => sum + expense.amount, 0);
   }
 
-  public getPercentageByCategory(categoryName: string): number {
+  getPercentageByCategory(categoryName: string): number {
     const totalByCategory = this.getTotalByCategory(categoryName);
     return (totalByCategory / this.totalExpenses) * 100;
   }

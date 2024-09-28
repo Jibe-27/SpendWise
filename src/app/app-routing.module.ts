@@ -4,9 +4,15 @@ import { AuthenticationComponent } from './auth/authentication/authentication.co
 import { HomeComponent } from './home/home.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { authenticationGuard } from './auth/authentication/authentication.guard';
+import { ExpenseComponent } from './expense/expense.component';
 
 const routes: Routes = [
   { path: 'auth', component: AuthenticationComponent },
+  {
+    path: 'expense/:id',
+    component: ExpenseComponent,
+    canActivate: [authenticationGuard],
+  },
   {
     path: 'home',
     component: HomeComponent,
