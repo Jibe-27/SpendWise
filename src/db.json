@@ -1,0 +1,117 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "john@example.com",
+      "password": "Azerty",
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "email": "jane@example.com",
+      "password": "Qwerty",
+      "name": "Jane Smith"
+    },
+    {
+      "id": 3,
+      "email": "alice@example.com",
+      "password": "123456",
+      "name": "Alice Johnson"
+    }
+  ],
+  "Categories": [
+    {
+      "id": 1,
+      "name": "Shopping",
+      "icon": "shopping cart checkout",
+      "color": "#FF5733",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Loisirs",
+      "icon": "home",
+      "color": "#33FF57",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Restaurant",
+      "icon": "Restaurant",
+      "color": "#3357FF",
+      "userId": 2
+    },
+    {
+      "name": "New Category",
+      "color": "#000000",
+      "icon": "icon-name",
+      "userId": 1,
+      "id": 4
+    },
+  
+    {
+      "name": "restau",
+      "color": "#b95b5b",
+      "icon": "Material Design icon guidelines Learn about the latest best practices for icons Figma plugin Use the Material Symbols plugin on Figma GitHub repo This repository contains the binary font file served by Google Fonts Apache license Material Symbols are available under the Apache License Version 2.0 Developer guide How to use Material Symbols in your projects Download Material Symbols Get all Material Symbols in a single variable font file UI actions Social Common actions Communication Photo & Image Business & Payments Maps Text Formatting Audio & Video Transportation Activities Hardware Android Privacy & Security Travel Household Home AI Brand Google Fonts makes it easy to bring personality and performance to your websites and products. Our robust catalog of open-source fonts and icons makes it easy to integrate expressive type and icons seamlessly — no matter where you are in the world. About us  Making the web more beautiful, fast, and open through great typography & icons  Fonts GitHub  This repository contains the binary font files served by Google Fonts  Icons GitHub  This repository contains the binary font files served by Google Icons  Fonts blog  This blog has stories about how different fonts were designed for various languages and scripts  Material Design  A cross-platform design system for creating high-quality digital experiences  Google Design  Google Design highlights the breadth and craft of design and fonts from speculation, to work-in-progress, to finished product  Privacy Terms of service Diversity 3",
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "name": "restau",
+      "color": "#b95b5b",
+      "icon": "redo",
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "name": "restau",
+      "color": "#5bb96a",
+      "icon": "Redo",
+      "userId": 2,
+      "id": 8
+    },
+    {
+      "name": "restau",
+      "color": "#c2ebc9",
+      "icon": "star",
+      "userId": 2,
+      "id": 9
+    },
+    {
+      "name": "Settings",
+      "color": "#ecc5da",
+      "icon": "Settings",
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "name": "Settings",
+      "color": "#eac5ec",
+      "icon": "settings",
+      "userId": 2,
+      "id": 11
+    },
+    {
+      "name": "Settings",
+      "color": "#eac5ec",
+      "icon": "settings",
+      "userId": 2,
+      "id": 12
+    },
+    {
+      "name": "browser",
+      "color": "#eac5ec",
+      "icon": "globe",
+      "userId": 2,
+      "id": 13
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "name": "Franprix",
+      "amount": -15.99,
+      "categoryid": 1
+    }
+  ]
+}

@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import { ModalFormComponent } from './modal-form/modal-form.component';
+import { AddCategorieComponent } from './add-categorie/add-categorie.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,6 +32,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthenticationComponent,
     NotificationComponent,
     HomeComponent,
+    NotificationComponent,
+    ModalFormComponent,
+    AddCategorieComponent
   ],
   imports: [
     BrowserModule,

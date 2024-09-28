@@ -28,12 +28,12 @@ export class CategorieComponent {
         console.log("les categorie de services", this.tabCategories);
       }
     );
-    this.categorieService.getCategoriesById(1).subscribe(
-      (data) => {
-        this.tabdepenses = data;
-        console.log("les categorie de services de 1", this.tabdepenses);
-      }
-    );
+    // this.categorieService.getCategoriesById(1).subscribe(
+    //   (data) => {
+    //     this.tabdepenses = data;
+    //     console.log("les categorie de services de 1", this.tabdepenses);
+    //   }
+    // );
     this.categorieService.calculateTotalExpensesByCategory().subscribe(totals => {
       this.DepensesTotalParcategorie = Object.values(totals).sort((a: any, b: any) => b.total - a.total);
       this.DisplayChart();

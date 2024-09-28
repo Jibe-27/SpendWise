@@ -14,8 +14,8 @@ export class CategorieService {
    GetAllCategories(): Observable<any>{
     return this.http.get<any>('http://localhost:3000/categories');
   }
-  getCategoriesById(id: number): Observable<any>{
-    return this.http.get<any>('http://localhost:3000/expenses/?categorieId='+id);
+  getCategoriesByIdUser(id: number): Observable<any>{
+    return this.http.get<any>('http://localhost:3000/Categories/?userId='+id);
   }
   getAllExpenses(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/expenses');

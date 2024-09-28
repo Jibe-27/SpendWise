@@ -1,0 +1,20 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <h2>Liste des Catégories</h2>
+  <button class="add-category-button" (click)="openAddCategoryModal()">Ajouter une nouvelle catégorie</button>
+</div>
+<br>
+<br>
+<div *ngIf="tabCategories.length > 0">
+  <ul class="category-list">
+    <li *ngFor="let categorie of tabCategories" class="category-item">
+      <div class="icon-container" [ngStyle]="{'background-color': categorie.color}">
+        <i class="pi pi-{{categorie.icon}} icon-large" style="width: 100%;"></i>
+      </div>
+      <span class="category-name">{{ categorie.name }}</span>
+    </li>
+  </ul>
+</div>
+<div *ngIf="tabCategories.length === 0">
+  <p>Aucune catégorie disponible.</p>
+</div>
+<app-modal-form [userId]="userId" (categoryAdded)="onCategoryAdded($event)"></app-modal-form>
