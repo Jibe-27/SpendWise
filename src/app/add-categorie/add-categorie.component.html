@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <h2>{{'CATEGORY.CATEGORY_LIST'}}</h2>
-  <button class="add-category-button" (click)="openAddCategoryModal()">{{'CATEGORY.ADD_CATEGORY'}}</button>
+  <h2>{{'CATEGORY.CATEGORY_LIST' | translate}}</h2>
+  <button class="add-category-button" (click)="openAddCategoryModal()">{{'CATEGORY.ADD_CATEGORY' | translate}}</button>
 </div>
 <br>
 <br>
@@ -15,6 +15,6 @@
   </ul>
 </div>
 <div *ngIf="tabCategories.length === 0">
-  <p>{{'CATEGORY.NO_CATEGORY_AVAILABLE'}}</p>
+  <p>{{'CATEGORY.NO_CATEGORY_AVAILABLE' | translate}}</p>
 </div>
 <app-modal-form [userId]="userId" (categoryAdded)="onCategoryAdded($event)"></app-modal-form>
