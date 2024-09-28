@@ -3,7 +3,7 @@
     {
       "id": 1,
       "email": "john@example.com",
-      "password": "Azerty",
+      "password": "Azerty4ù%343f",
       "name": "John Doe",
       "budget": 1000,
       "initialBudget": 1000

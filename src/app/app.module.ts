@@ -24,6 +24,8 @@ import { AddCategorieComponent } from './add-categorie/add-categorie.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { RelativeDatePipe } from './shared/relative-date.pipe';
 import { HighlightImportantExpenseDirective } from './shared/highlight-important-expense.directive';
+import { HeaderComponent } from './header/header.component';
+import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddCategorieComponent,
     ExpenseComponent,
     RelativeDatePipe,
-    HighlightImportantExpenseDirective
+    HighlightImportantExpenseDirective,
+    HeaderComponent,
+    AuthenticatedLayoutComponent
   ],
   imports: [
     BrowserModule,
