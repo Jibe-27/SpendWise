@@ -6,13 +6,13 @@
         <div class="w-full">
           <div class="card bg-red-400 p-8 rounded-lg flex flex-col items-center justify-center">
             <h3 class="text-2xl font-bold mb-2">{{ 'HOME.EXPENSES' | translate }}</h3>
-            <p class="text-3xl font-bold">2555 €</p>
+            <p class="text-3xl font-bold">{{ totalExpenses | currency:'EUR' }}</p>
           </div>
         </div>
         <div class="w-full">
           <div class="card bg-green-400 p-8 rounded-lg flex flex-col items-center justify-center">
             <h3 class="text-2xl font-bold mb-2">{{ 'HOME.REVENUES' | translate }}</h3>
-            <p class="text-3xl font-bold">500 €</p>
+            <p class="text-3xl font-bold">500 €</p> <!-- Remplacer par une variable si nécessaire -->
           </div>
         </div>
       </div>
@@ -28,13 +28,13 @@
       <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
         <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES_BY_CATEGORY' | translate }}</h3>
         <ul>
-          <li *ngFor="let expense of expenses" class="mb-4">
+          <li *ngFor="let category of categories" class="mb-4">
             <div class="flex items-center mb-2">
-              <i [class]="expense.icon" [style.color]="expense.color" class="text-2xl mr-2"></i>
-              <span class="flex-1">{{ expense.category }}</span>
-              <span class="text-gray-600">{{ getRandomPercentage() }}%</span>
+              <i [class]="category.icon" [style.color]="category.color" class="text-2xl mr-2"></i>
+              <span class="flex-1">{{ category.name }}</span>
+              <span class="text-gray-600">{{ getTotalByCategory(category.name) | currency:'EUR' }} ({{ getPercentageByCategory(category.name) | number:'1.0-2' }}%)</span>
             </div>
-            <p-progressBar [value]="getRandomPercentage()" [style]="{height: '10px', width: '100%'}"></p-progressBar>
+            <p-progressBar [value]="getPercentageByCategory(category.name)" [style]="{height: '18px', width: '100%'}"></p-progressBar>
           </li>
         </ul>
       </div>
@@ -50,7 +50,7 @@
           <p-chart type="doughnut" [data]="data" [options]="options" style="height: 50%;"></p-chart>
           <div class="chart-label">
             <div>{{ 'HOME.TOTAL' | translate }}</div>
-            <div>25555</div>
+            <div>{{ totalExpenses | currency:'EUR' }}</div>
           </div>
         </div>
       </div>
@@ -77,19 +77,21 @@
       <div class="p-fluid">
         <div class="p-field">
           <label for="category">{{ 'HOME.CATEGORY' | translate }}</label>
-          <input id="category" type="text" pInputText formControlName="category" />
+          <select id="category" pInputText formControlName="category">
+            <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+          </select>
+        </div>
+        <div class="p-field">
+          <label for="store">{{ 'HOME.STORE' | translate }}</label>
+          <input id="store" type="text" pInputText formControlName="store" />
         </div>
         <div class="p-field">
           <label for="amount">{{ 'HOME.AMOUNT' | translate }}</label>
           <input id="amount" type="number" pInputText formControlName="amount" />
         </div>
         <div class="p-field">
-          <label for="color">{{ 'HOME.COLOR' | translate }}</label>
-          <input id="color" type="text" pInputText formControlName="color" />
-        </div>
-        <div class="p-field">
-          <label for="icon">{{ 'HOME.ICON' | translate }}</label>
-          <input id="icon" type="text" pInputText formControlName="icon" />
+          <label for="description">{{ 'HOME.DESCRIPTION' | translate }}</label>
+          <input id="description" type="text" pInputText formControlName="description" />
         </div>
       </div>
       <div class="p-dialog-footer">

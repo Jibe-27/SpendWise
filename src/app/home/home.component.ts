@@ -58,6 +58,17 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  public getTotalByCategory(categoryName: string): number {
+    return this.expenses
+      .filter((expense) => expense.category.name === categoryName)
+      .reduce((sum, expense) => sum + expense.amount, 0);
+  }
+
+  public getPercentageByCategory(categoryName: string): number {
+    const totalByCategory = this.getTotalByCategory(categoryName);
+    return (totalByCategory / this.totalExpenses) * 100;
+  }
+
   private initializeChartData(): void {
     this.data = {
       labels: this.expenses.map((expense) => expense.category.name),
