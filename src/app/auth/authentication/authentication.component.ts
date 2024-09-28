@@ -9,19 +9,23 @@ import { AuthService } from '../authentication.service';
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  styleUrls: ['./authentication.component.scss'],
 })
-export class AuthenticationComponent implements OnInit{
+export class AuthenticationComponent implements OnInit {
   isSignIn = false;
   form: FormGroup = new FormGroup({});
   languages: Language[] = LANGUAGES;
   selectedLanguage: string;
 
-  constructor(private notificationService: NotificationService, private translateService: TranslateService,private authService:AuthService) { 
+  constructor(
+    private notificationService: NotificationService,
+    private translateService: TranslateService,
+    private authService: AuthService
+  ) {
     this.selectedLanguage = translateService.getDefaultLang();
     this.languageInit();
   }
-  
+
   ngOnInit(): void {
     this.setupForm();
   }
@@ -29,7 +33,9 @@ export class AuthenticationComponent implements OnInit{
   changeLanguage(event: Event) {
     const target = event.target as HTMLSelectElement;
     const languageCode = target?.value;
-    const selectedLang = this.languages.find(lang => lang.code === languageCode);
+    const selectedLang = this.languages.find(
+      (lang) => lang.code === languageCode
+    );
     if (selectedLang) {
       this.translateService.use(selectedLang.code);
       this.selectedLanguage = selectedLang.code;
@@ -37,76 +43,92 @@ export class AuthenticationComponent implements OnInit{
     this.loadTranslatedLanguages();
   }
 
-
   onSubmit(): void {
-    if (this.form.valid) { 
+    if (this.form.valid) {
       const user: User = {
         email: this.form.controls['email'].value,
         password: this.form.controls['password'].value,
-        name: this.form.controls['name']?.value ??""
-      }
+        name: this.form.controls['name']?.value ?? '',
+        budget: this.form.controls['budget']?.value ?? 0,
+      };
 
       if (!this.isSignIn) {
         this.authService.login(user).subscribe({
-          next: res => {
-            this.notificationService.success("AUTH.LOGIN_SUCCESS");
+          next: (res) => {
+            this.notificationService.success('AUTH.LOGIN_SUCCESS');
           },
-          error: err => {
-            this.notificationService.error("AUTH.LOGIN_FAILED");
-          }
+          error: (err) => {
+            this.notificationService.error('AUTH.LOGIN_FAILED');
+          },
         });
       } else {
         this.authService.register(user).subscribe({
-          next: res => {
-            this.notificationService.success("AUTH.REGISTER_SUCCESS");
+          next: (res) => {
+            this.notificationService.success('AUTH.REGISTER_SUCCESS');
           },
-          error: err => {
-            this.notificationService.error("AUTH.REGISTER_FAILED");
-          }
+          error: (err) => {
+            this.notificationService.error('AUTH.REGISTER_FAILED');
+          },
         });
       }
     } else {
       if (this.isSignIn) {
-        this.notificationService.error("AUTH.REGISTER_FAILED");
+        this.notificationService.error('AUTH.REGISTER_FAILED');
       } else {
-        this.notificationService.error("AUTH.LOGIN_FAILED");
+        this.notificationService.error('AUTH.LOGIN_FAILED');
       }
     }
   }
+
   switchToForm() {
     this.isSignIn = !this.isSignIn;
     this.setupForm();
   }
+
   private languageInit() {
-    const availableLangCodes = LANGUAGES.map(lang => lang.code);
+    const availableLangCodes = LANGUAGES.map((lang) => lang.code);
 
     this.translateService.addLangs(availableLangCodes);
 
     const browserLang = this.translateService.getBrowserLang();
-    const langToUse = browserLang && availableLangCodes.includes(browserLang) ? browserLang : DEFAULT_LANGUAGE;
+    const langToUse =
+      browserLang && availableLangCodes.includes(browserLang)
+        ? browserLang
+        : DEFAULT_LANGUAGE;
     this.translateService.use(langToUse);
     this.selectedLanguage = langToUse;
     this.loadTranslatedLanguages();
   }
+
   private loadTranslatedLanguages() {
-    this.translateService.get(LANGUAGES.map(lang => lang.name)).subscribe(translations => {
-      this.languages = LANGUAGES.map(lang => ({
-        code: lang.code,
-        name: translations[lang.name]
-      }));
-    });
+    this.translateService
+      .get(LANGUAGES.map((lang) => lang.name))
+      .subscribe((translations) => {
+        this.languages = LANGUAGES.map((lang) => ({
+          code: lang.code,
+          name: translations[lang.name],
+        }));
+      });
   }
-  private setupForm():void {
+
+  private setupForm(): void {
     if (this.isSignIn) {
       this.form = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        name: new FormControl('', Validators.required)
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
+        name: new FormControl('', Validators.required),
+        budget: new FormControl(0, [Validators.required, Validators.min(0)]),
       });
     } else {
       this.form = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.minLength(6)])
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
       });
     }
   }
