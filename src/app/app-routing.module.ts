@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './auth/authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { CategorieComponent } from './categorie/categorie.component';
-import { authenticationGuard } from './auth/authentication/authentication.guard';
 import { ExpenseComponent } from './expense/expense.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { authenticationGuard } from './authentication/authentication.guard';
 
 const routes: Routes = [
   { path: 'auth', component: AuthenticationComponent },

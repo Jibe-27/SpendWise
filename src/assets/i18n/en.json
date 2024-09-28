@@ -1,41 +1,57 @@
 {
-    "COMMON":{
-        "LOGIN":"Login",
-        "REGISTER":"Register",
-         "CANCEL": "Cancel",
-    "ADD": "Add"
+  "AUTH": {
+    "FORM": {
+      "EMAIL": "Email",
+      "NAME": "Name",
+      "PASSWORD": "Password",
+      "PASSWORD_ERROR": "The password is invalid. Ensure it is required, has at least 6 characters, one uppercase letter, one lowercase letter, one digit, and one special character.",
+      "SALARY": "Salary"
     },
-    "AUTH":{
-        "LOGIN_SUCCESS":"Login Success",
-        "LOGIN_FAILED":"Login Failed",
-        "REGISTER_SUCCESS":"Register Success",
-        "REGISTER_FAILED":"Register Failed",
-        "FORM":{
-            "NAME":"Name",
-            "EMAIL":"Email",
-            "PASSWORD":"Password"
-        }
-    },
-    "HOME": {
-        "EXPENSES": "Expenses",
-        "REVENUES": "Revenues",
-        "LINE_CHART": "Line Chart",
-        "DOUGHNUT_CHART": "Doughnut Chart",
-        "EXPENSES_BY_CATEGORY": "Expenses by Category",
-        "TOTAL": "Total",
-        "ADD_EXPENSE": "Add Expense",
-        "CATEGORY": "Category",
-        "AMOUNT": "Amount",
-        "COLOR": "Color",
-        "ICON": "Icon"
-      },
-    "LANGUAGE":{
-        "EN":"English",
-        "FR":"French",
-        "DE":"German",
-        "ES":"Spanish",
-        "AR":"Arabic",
-        "SELECT_LANGUAGE": "Select a Language"
-    }
+    "LOGIN_FAILED": "Login Failed",
+    "LOGIN_SUCCESS": "Login Success",
+    "REGISTER_FAILED": "Register Failed",
+    "REGISTER_SUCCESS": "Register Success"
+  },
+  "CATEGORY": {
+    "ACTION": "Action",
+    "ADD_CATEGORY": "Add Category",
+    "CATEGORY_LIST": "Category List",
+    "ID": "ID",
+    "NAME": "Name",
+    "NO_CATEGORY_AVAILABLE": "No category available"
+  },
+  "COMMON": {
+    "ADD": "Add",
+    "CANCEL": "Cancel",
+    "DAYS_AGO": "{{count}} days ago",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "TODAY": "Today",
+    "YESTERDAY": "Yesterday"
+  },
+  "EXPENSE": {
+    "DESCRIPTION": "Description",
+    "STORE": "Store"
+  },
+  "HOME": {
+    "ADD_EXPENSE": "Add Expense",
+    "AMOUNT": "Amount",
+    "CATEGORY": "Category",
+    "COLOR": "Color",
+    "DOUGHNUT_CHART": "Doughnut Chart",
+    "EXPENSES": "Expenses",
+    "EXPENSES_BY_CATEGORY": "Expenses by Category",
+    "ICON": "Icon",
+    "LINE_CHART": "Line Chart",
+    "REVENUES": "Revenues",
+    "TOTAL": "Total"
+  },
+  "LANGUAGE": {
+    "AR": "Arabic",
+    "DE": "German",
+    "EN": "English",
+    "ES": "Spanish",
+    "FR": "French",
+    "SELECT_LANGUAGE": "Select a Language"
+  }
 }
-

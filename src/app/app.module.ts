@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AuthenticationComponent } from './auth/authentication/authentication.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { ToastModule } from 'primeng/toast';
@@ -22,6 +22,8 @@ import { DialogModule } from 'primeng/dialog';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { AddCategorieComponent } from './add-categorie/add-categorie.component';
 import { ExpenseComponent } from './expense/expense.component';
+import { RelativeDatePipe } from './shared/relative-date.pipe';
+import { HighlightImportantExpenseDirective } from './shared/highlight-important-expense.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,7 +38,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotificationComponent,
     ModalFormComponent,
     AddCategorieComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    RelativeDatePipe,
+    HighlightImportantExpenseDirective
   ],
   imports: [
     BrowserModule,

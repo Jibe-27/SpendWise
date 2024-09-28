@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   private loadExpenses(): void {
     this.expenseService.getExpenses(this.userId).subscribe((expenses) => {
       this.expenses = expenses;
+      console.log(expenses)
       this.calculateTotalExpenses();
     });
   }

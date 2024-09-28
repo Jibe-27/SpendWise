@@ -1,41 +1,57 @@
 {
-    "COMMON": {
-        "LOGIN": "Connexion",
-        "REGISTER": "Inscription",
-        "CANCEL": "Annuler",
-        "ADD": "Ajouter"
+  "AUTH": {
+    "FORM": {
+      "EMAIL": "Email",
+      "NAME": "Nom",
+      "PASSWORD": "Mot de passe",
+      "PASSWORD_ERROR": "Le mot de passe est invalide. Assurez-vous qu'il est requis, qu'il comporte au moins 6 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
+      "SALARY": "Salaire"
     },
-    "AUTH": {
-        "LOGIN_SUCCESS": "Connexion réussie",
-        "LOGIN_FAILED": "Échec de la connexion",
-        "REGISTER_SUCCESS": "Inscription réussie",
-        "REGISTER_FAILED": "Échec de l'inscription",
-        "FORM": {
-            "NAME": "Nom",
-            "EMAIL": "Email",
-            "PASSWORD": "Mot de passe"
-        }
-    },
-    "HOME": {
-      "EXPENSES": "Dépenses",
-      "REVENUES": "Revenus",
-      "LINE_CHART": "Graphique en ligne",
-      "DOUGHNUT_CHART": "Diagramme circulaire",
-      "EXPENSES_BY_CATEGORY": "Dépenses par catégorie",
-      "TOTAL": "Total",
-      "ADD_EXPENSE": "Ajouter une dépense",
-      "CATEGORY": "Catégorie",
-      "AMOUNT": "Montant",
-      "COLOR": "Couleur",
-      "ICON": "Icône"
-    },
-      
-    "LANGUAGE": {
-        "EN": "Anglais",
-        "FR": "Français",
-        "DE": "Allemand",
-        "ES": "Espagnol",
-        "AR": "Arabe",
-        "SELECT_LANGUAGE": "Sélectionnez une langue"
-    }
+    "LOGIN_FAILED": "Échec de la connexion",
+    "LOGIN_SUCCESS": "Connexion réussie",
+    "REGISTER_FAILED": "Échec de l'inscription",
+    "REGISTER_SUCCESS": "Inscription réussie"
+  },
+  "CATEGORY": {
+    "ACTION": "Action",
+    "ADD_CATEGORY": "Ajouter une catégorie",
+    "CATEGORY_LIST": "Liste des catégories",
+    "ID": "ID",
+    "NAME": "Nom",
+    "NO_CATEGORY_AVAILABLE": "Aucune catégorie disponible"
+  },
+  "COMMON": {
+    "ADD": "Ajouter",
+    "CANCEL": "Annuler",
+    "DAYS_AGO": "Il y a {{count}} jours",
+    "LOGIN": "Connexion",
+    "REGISTER": "Inscription",
+    "TODAY": "Aujourd'hui",
+    "YESTERDAY": "Hier"
+  },
+  "EXPENSE": {
+    "DESCRIPTION": "Description",
+    "STORE": "Magasin"
+  },
+  "HOME": {
+    "ADD_EXPENSE": "Ajouter une dépense",
+    "AMOUNT": "Montant",
+    "CATEGORY": "Catégorie",
+    "COLOR": "Couleur",
+    "DOUGHNUT_CHART": "Graphique en anneau",
+    "EXPENSES": "Dépenses",
+    "EXPENSES_BY_CATEGORY": "Dépenses par catégorie",
+    "ICON": "Icône",
+    "LINE_CHART": "Graphique en ligne",
+    "REVENUES": "Revenus",
+    "TOTAL": "Total"
+  },
+  "LANGUAGE": {
+    "AR": "Arabe",
+    "DE": "Allemand",
+    "EN": "Anglais",
+    "ES": "Espagnol",
+    "FR": "Français",
+    "SELECT_LANGUAGE": "Choisir une langue"
+  }
 }

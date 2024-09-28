@@ -13,7 +13,7 @@ export class ExpenseService {
 
   getExpenses(userId: number): Observable<Expense[]> {
     return this.http.get<Expense[]>(
-      `${this.apiUrl}/expenses/user/?userId=${userId}`
+      `${this.apiUrl}/expenses/user/${userId}`
     );
   }
 

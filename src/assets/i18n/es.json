@@ -1,40 +1,57 @@
 {
-    "COMMON": {
-        "LOGIN": "Iniciar sesión",
-        "REGISTER": "Registrarse",
-      "CANCEL": "Cancelar",
-      "ADD": "Añadir"
+  "AUTH": {
+    "FORM": {
+      "EMAIL": "Correo electrónico",
+      "NAME": "Nombre",
+      "PASSWORD": "Contraseña",
+      "PASSWORD_ERROR": "La contraseña es inválida. Asegúrese de que sea requerida, tenga al menos 6 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.",
+      "SALARY": "Salario"
     },
-    "AUTH": {
-        "LOGIN_SUCCESS": "Inicio de sesión exitoso",
-        "LOGIN_FAILED": "Error al iniciar sesión",
-        "REGISTER_SUCCESS": "Registro exitoso",
-        "REGISTER_FAILED": "Error al registrarse",
-        "FORM": {
-            "NAME": "Nombre",
-            "EMAIL": "Correo electrónico",
-            "PASSWORD": "Contraseña"
-        }
-    },
-    "HOME": {
-      "EXPENSES": "Gastos",
-      "REVENUES": "Ingresos",
-      "LINE_CHART": "Gráfico de líneas",
-      "DOUGHNUT_CHART": "Gráfico de rosquilla",
-      "EXPENSES_BY_CATEGORY": "Gastos por categoría",
-      "TOTAL": "Total",
-      "ADD_EXPENSE": "Añadir gasto",
-      "CATEGORY": "Categoría",
-      "AMOUNT": "Monto",
-      "COLOR": "Color",
-      "ICON": "Ícono"
-    },
-    "LANGUAGE": {
-        "EN": "Inglés",
-        "FR": "Francés",
-        "DE": "Alemán",
-        "ES": "Español",
-        "AR": "Árabe",
-        "SELECT_LANGUAGE": "Selecciona un idioma"
-    }
+    "LOGIN_FAILED": "Inicio de sesión fallido",
+    "LOGIN_SUCCESS": "Inicio de sesión exitoso",
+    "REGISTER_FAILED": "Registro fallido",
+    "REGISTER_SUCCESS": "Registro exitoso"
+  },
+  "CATEGORY": {
+    "ACTION": "Acción",
+    "ADD_CATEGORY": "Agregar categoría",
+    "CATEGORY_LIST": "Lista de categorías",
+    "ID": "ID",
+    "NAME": "Nombre",
+    "NO_CATEGORY_AVAILABLE": "No hay categorías disponibles"
+  },
+  "COMMON": {
+    "ADD": "Agregar",
+    "CANCEL": "Cancelar",
+    "DAYS_AGO": "Hace {{count}} días",
+    "LOGIN": "Iniciar sesión",
+    "REGISTER": "Registrarse",
+    "TODAY": "Hoy",
+    "YESTERDAY": "Ayer"
+  },
+  "EXPENSE": {
+    "DESCRIPTION": "Descripción",
+    "STORE": "Tienda"
+  },
+  "HOME": {
+    "ADD_EXPENSE": "Agregar gasto",
+    "AMOUNT": "Cantidad",
+    "CATEGORY": "Categoría",
+    "COLOR": "Color",
+    "DOUGHNUT_CHART": "Gráfico de anillo",
+    "EXPENSES": "Gastos",
+    "EXPENSES_BY_CATEGORY": "Gastos por categoría",
+    "ICON": "Ícono",
+    "LINE_CHART": "Gráfico de líneas",
+    "REVENUES": "Ingresos",
+    "TOTAL": "Total"
+  },
+  "LANGUAGE": {
+    "AR": "Árabe",
+    "DE": "Alemán",
+    "EN": "Inglés",
+    "ES": "Español",
+    "FR": "Francés",
+    "SELECT_LANGUAGE": "Seleccionar idioma"
+  }
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DEFAULT_LANGUAGE, LANGUAGES } from '../../shared/constant.shared';
-import { Language, User } from '../../shared/model.shared';
-import { NotificationService } from '../../shared/notification/notification.service';
+import { DEFAULT_LANGUAGE, LANGUAGES } from '../shared/constant.shared';
+import { Language, User } from '../shared/model.shared';
+import { NotificationService } from '../shared/notification/notification.service';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../authentication.service';
+import { AuthService } from './authentication.service';
 import { Router } from '@angular/router';
+import { PasswordValidator } from './password-validator';
 
 @Component({
   selector: 'app-authentication',
@@ -88,7 +89,10 @@ export class AuthenticationComponent implements OnInit {
     this.isSignIn = !this.isSignIn;
     this.setupForm();
   }
-
+  hasPasswordErrors(): boolean {
+    const control = this.form.get('password');
+    return control?.touched && control?.invalid ? true : false;
+  }
   private languageInit() {
     const availableLangCodes = LANGUAGES.map((lang) => lang.code);
 
@@ -122,6 +126,7 @@ export class AuthenticationComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(6),
+          PasswordValidator.strongPassword()
         ]),
         name: new FormControl('', Validators.required),
         budget: new FormControl(0, [Validators.required, Validators.min(0)]),
@@ -132,6 +137,7 @@ export class AuthenticationComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(6),
+          PasswordValidator.strongPassword()
         ]),
       });
     }

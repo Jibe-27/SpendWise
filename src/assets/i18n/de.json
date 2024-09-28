@@ -1,25 +1,57 @@
 {
-    "COMMON": {
-        "LOGIN": "Anmelden",
-        "REGISTER": "Registrieren"
+  "AUTH": {
+    "FORM": {
+      "EMAIL": "E-Mail",
+      "NAME": "Name",
+      "PASSWORD": "Passwort",
+      "PASSWORD_ERROR": "Das Passwort ist ungültig. Stellen Sie sicher, dass es erforderlich ist, mindestens 6 Zeichen lang ist, einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthält.",
+      "SALARY": "Gehalt"
     },
-    "AUTH": {
-        "LOGIN_SUCCESS": "Anmeldung erfolgreich",
-        "LOGIN_FAILED": "Anmeldung fehlgeschlagen",
-        "REGISTER_SUCCESS": "Registrierung erfolgreich",
-        "REGISTER_FAILED": "Registrierung fehlgeschlagen",
-        "FORM": {
-            "NAME": "Name",
-            "EMAIL": "E-Mail",
-            "PASSWORD": "Passwort"
-        }
-    },
-    "LANGUAGE": {
-        "EN": "Englisch",
-        "FR": "Französisch",
-        "DE": "Deutsch",
-        "ES": "Spanisch",
-        "AR": "Arabisch",
-        "SELECT_LANGUAGE": "Sprache auswählen"
-    }
+    "LOGIN_FAILED": "Anmeldung fehlgeschlagen",
+    "LOGIN_SUCCESS": "Anmeldung erfolgreich",
+    "REGISTER_FAILED": "Registrierung fehlgeschlagen",
+    "REGISTER_SUCCESS": "Registrierung erfolgreich"
+  },
+  "CATEGORY": {
+    "ACTION": "Aktion",
+    "ADD_CATEGORY": "Kategorie hinzufügen",
+    "CATEGORY_LIST": "Kategorieliste",
+    "ID": "ID",
+    "NAME": "Name",
+    "NO_CATEGORY_AVAILABLE": "Keine Kategorie verfügbar"
+  },
+  "COMMON": {
+    "ADD": "Hinzufügen",
+    "CANCEL": "Abbrechen",
+    "DAYS_AGO": "Vor {{count}} Tagen",
+    "LOGIN": "Anmelden",
+    "REGISTER": "Registrieren",
+    "TODAY": "Heute",
+    "YESTERDAY": "Gestern"
+  },
+  "EXPENSE": {
+    "DESCRIPTION": "Beschreibung",
+    "STORE": "Geschäft"
+  },
+  "HOME": {
+    "ADD_EXPENSE": "Ausgabe hinzufügen",
+    "AMOUNT": "Betrag",
+    "CATEGORY": "Kategorie",
+    "COLOR": "Farbe",
+    "DOUGHNUT_CHART": "Ringdiagramm",
+    "EXPENSES": "Ausgaben",
+    "EXPENSES_BY_CATEGORY": "Ausgaben nach Kategorie",
+    "ICON": "Symbol",
+    "LINE_CHART": "Liniendiagramm",
+    "REVENUES": "Einnahmen",
+    "TOTAL": "Gesamt"
+  },
+  "LANGUAGE": {
+    "AR": "Arabisch",
+    "DE": "Deutsch",
+    "EN": "Englisch",
+    "ES": "Spanisch",
+    "FR": "Französisch",
+    "SELECT_LANGUAGE": "Sprache auswählen"
+  }
 }

@@ -1,25 +1,57 @@
 {
-    "COMMON": {
-        "LOGIN": "تسجيل الدخول",
-        "REGISTER": "التسجيل"
+  "AUTH": {
+    "FORM": {
+      "EMAIL": "البريد الإلكتروني",
+      "NAME": "الاسم",
+      "PASSWORD": "كلمة المرور",
+      "PASSWORD_ERROR": "كلمة المرور غير صالحة. تأكد من أنها مطلوبة، وتتكون من 6 أحرف على الأقل، تحتوي على حرف كبير، حرف صغير، رقم وحرف خاص.",
+      "SALARY": "الراتب"
     },
-    "AUTH": {
-        "LOGIN_SUCCESS": "تم تسجيل الدخول بنجاح",
-        "LOGIN_FAILED": "فشل في تسجيل الدخول",
-        "REGISTER_SUCCESS": "تم التسجيل بنجاح",
-        "REGISTER_FAILED": "فشل في التسجيل",
-        "FORM": {
-            "NAME": "الاسم",
-            "EMAIL": "البريد الإلكتروني",
-            "PASSWORD": "كلمة المرور"
-        }
-    },
-    "LANGUAGE": {
-        "EN": "الإنجليزية",
-        "FR": "الفرنسية",
-        "DE": "الألمانية",
-        "ES": "الإسبانية",
-        "AR": "العربية",
-        "SELECT_LANGUAGE": "اختر اللغة"
-    }
+    "LOGIN_FAILED": "فشل تسجيل الدخول",
+    "LOGIN_SUCCESS": "تم تسجيل الدخول بنجاح",
+    "REGISTER_FAILED": "فشل التسجيل",
+    "REGISTER_SUCCESS": "تم التسجيل بنجاح"
+  },
+  "CATEGORY": {
+    "ACTION": "الإجراء",
+    "ADD_CATEGORY": "إضافة فئة",
+    "CATEGORY_LIST": "قائمة الفئات",
+    "ID": "المعرف",
+    "NAME": "الاسم",
+    "NO_CATEGORY_AVAILABLE": "لا توجد فئات متاحة"
+  },
+  "COMMON": {
+    "ADD": "إضافة",
+    "CANCEL": "إلغاء",
+    "DAYS_AGO": "منذ {{count}} أيام",
+    "LOGIN": "تسجيل الدخول",
+    "REGISTER": "التسجيل",
+    "TODAY": "اليوم",
+    "YESTERDAY": "أمس"
+  },
+  "EXPENSE": {
+    "DESCRIPTION": "الوصف",
+    "STORE": "المتجر"
+  },
+  "HOME": {
+    "ADD_EXPENSE": "إضافة مصروف",
+    "AMOUNT": "المبلغ",
+    "CATEGORY": "الفئة",
+    "COLOR": "اللون",
+    "DOUGHNUT_CHART": "مخطط دائري",
+    "EXPENSES": "المصروفات",
+    "EXPENSES_BY_CATEGORY": "المصروفات حسب الفئة",
+    "ICON": "رمز",
+    "LINE_CHART": "مخطط خطي",
+    "REVENUES": "الإيرادات",
+    "TOTAL": "الإجمالي"
+  },
+  "LANGUAGE": {
+    "AR": "العربية",
+    "DE": "الألمانية",
+    "EN": "الإنجليزية",
+    "ES": "الإسبانية",
+    "FR": "الفرنسية",
+    "SELECT_LANGUAGE": "اختر لغة"
+  }
 }

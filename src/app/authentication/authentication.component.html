@@ -11,13 +11,14 @@
           class="w-full p-4 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary"
           [placeholder]="'AUTH.FORM.NAME' | translate"
         />
+        <p *ngIf="isSignIn">{{'AUTH.FORM.SALARY' | translate}}</p>
         <input
           *ngIf="isSignIn"
           type="number"
           id="budget"
           formControlName="budget"
           class="w-full p-4 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary"
-          [placeholder]="'AUTH.FORM.BUDGET' | translate"
+          [placeholder]="'AUTH.FORM.SALARY' | translate"
         />
         <input
           type="email"
@@ -33,6 +34,7 @@
           class="w-full p-4 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary"
           [placeholder]="'AUTH.FORM.PASSWORD' | translate"
         />
+        <p *ngIf="hasPasswordErrors() && isSignIn" class="text-danger">*{{'AUTH.FORM.PASSWORD_ERROR'|translate}}</p>
         <p-button
           class="text-xl bg-primary p-4 text-white rounded-lg uppercase cursor-pointer hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary"
           type="submit"
