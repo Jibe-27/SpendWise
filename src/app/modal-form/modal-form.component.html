@@ -1,25 +1,30 @@
 <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <h2>Ajouter une nouvelle catégorie</h2>
-      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Ajouter une nouvelle catégorie</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nom</label>
+        <input id="name" formControlName="name">
+      </div>
+      <div>
+        <label for="color">Couleur</label>
+        <input id="color" type="color" formControlName="color"> 
+      </div>
+      <div>
+        <label for="icon">Icon</label>
+        <input id="icon" type="text" formControlName="icon">
+      </div>
+      <div>
         <div>
-          <label for="name">Nom</label>
-          <input id="name" formControlName="name">
+          <a href="https://fonts.google.com/icons" style="color: darkblue;">Lien vers google icon</a>
         </div>
-        <div>
-          <label for="color">Couleur</label>
-          <input id="color" type="color" formControlName="color"> 
-        </div>
-        <div>
-          <label for="icon">Icon</label>
-          <input id="icon" type="text" formControlName="icon">
-          <a href="https://fonts.google.com/icons">Lien vers google icon</a>
-        </div>
-        <div>
-          <button type="button" (click)="closeModal()">Annuler</button>
-          <button type="submit" [disabled]="categoryForm.invalid">Ajouter</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="button-group">
+        <button type="button" (click)="closeModal()">Annuler</button>
+        <button type="submit" [disabled]="categoryForm.invalid">Ajouter</button>
+      </div>
+     
+    </form>
   </div>
+</div>
