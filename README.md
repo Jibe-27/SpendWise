@@ -7,7 +7,7 @@ SpendWise est une application de gestion des dépenses qui permet aux utilisateu
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
 - [Node.js](https://nodejs.org/) (version 16 ou supérieure)
-- [Angular CLI](https://angular.io/cli) (version 16 ou supérieure)
+- [Angular CLI](https://angular.io/cli) (version 16)
 
 ## Installation
 
