@@ -1,0 +1,9 @@
+<div class="card bg-white p-4 rounded-lg shadow-md mt-4">
+    <div class="flex justify-between items-center">
+      <h3 class="text-xl font-bold">{{ 'HOME.LINE_CHART' | translate }}</h3>
+      <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
+    </div>
+    <div class="chart-container mt-4 h-full">
+      <p-chart type="line" [data]="data" [options]="options" style="height: 100%;"></p-chart>
+    </div>
+</div>
