@@ -12,11 +12,11 @@
       </div>
       <div>
         <label for="color">Couleur</label>
-        <input id="color" type="color" formControlName="color" placeholder="Couleur de la catégorie" required> 
+        <input id="color" type="color" formControlName="color" required> 
       </div>
       <div>
         <label for="icon">Icon</label>
-        <input id="icon" type="text" formControlName="icon" required>
+        <input id="icon" type="text" formControlName="icon" required  placeholder="Couleur de la catégorie">
         <div *ngIf="categoryForm.get('icon')?.invalid && categoryForm.get('icon')?.touched" class="error-message">
           L'icône est requise.
         </div>
