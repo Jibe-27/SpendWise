@@ -1,27 +1,39 @@
-# SpendWise
+# Projet SpendWise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.15.
+Ce projet est une application de gestion des dépenses qui permet aux utilisateurs de suivre et de catégoriser leurs dépenses.
 
-## Development server
+## Prérequis
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (version 12 ou supérieure)
+- [Angular CLI](https://angular.io/cli) (version 10 ou supérieure)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+Clonez le dépôt et installez les dépendances :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+git https://github.com/Jibe-27/SpendWise.git
+cd spendwise
+npm install
+## Installation Lancer le serveur d'API
+Le projet utilise un serveur JSON pour simuler une API. Pour lancer le serveur d'API, utilisez la commande suivante :
 
-## Running end-to-end tests
+ node .\server\server.json
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ ## Lancer l'application Angular
 
-## Further help
+ Pour lancer le serveur de développement Angular, utilisez la commande suivante :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ ng serve
+
+ ## Accéder à l'application
+Une fois les deux serveurs lancés, ouvrez votre navigateur et accédez à l'adresse suivante pour utiliser l'application :
+http://localhost:4200/
+
+
+
+
+

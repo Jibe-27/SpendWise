@@ -1,7 +1,7 @@
 
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { ModalFormComponent } from '../modal-form/modal-form.component';
-import { NewCategorieService } from '../modal-form/new-categorie.service';
+import { NewCategorieService } from './new-categorie.service';
 import { AuthService } from '../authentication/authentication.service';
 import { User ,GeneralCategory,Categorie} from '../shared/model.shared';
 @Component({
@@ -25,8 +25,9 @@ export class AddCategorieComponent implements OnInit {
     if (user) {
       this.user = user;
       this.userId=user.id
-      
-    } else {      
+      console.log('userid is',this.userId)
+    } else {
+      // Handle the case where user is null
       console.error('User is null');
     }
     this.categorieService.getCategoriesByIdUser(this.userId).subscribe(categories => {
@@ -42,11 +43,13 @@ export class AddCategorieComponent implements OnInit {
     );
   }
 
-  openAddCategoryModal(): void {    
+  openAddCategoryModal(): void {
+    console.log('Setting userId in modal:', this.userId);
     this.modalFormComponent.userId = this.userId; 
+
     const modal = document.getElementById('modal');
     if (modal) {
-      modal.style.display = 'block';
+      modal.style.display = 'flex';
     }
   }
   onCategoryAdded(newCategory: Categorie): void {

@@ -7,6 +7,13 @@
       "name": "John Doe",
       "budget": 1000,
       "initialBudget": 1000
+    },
+    {
+      "id": 1727628326880,
+      "email": "oumou@gmail.com",
+      "password": "Test@123",
+      "name": "oumou",
+      "budget": 2000
     }
   ],
   "generalCategories": [
@@ -43,6 +50,34 @@
       "userId": 1,
       "color": "#FF9F40",
       "icon": "pi pi-heart"
+    },
+    {
+      "name": "Maison",
+      "color": "#ee9191",
+      "icon": "pi pi-home",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "name": "Maison",
+      "color": "#44ee50",
+      "icon": "pi pi-home",
+      "userId": 1727628326880,
+      "id": 5
+    },
+    {
+      "name": "Voyage",
+      "color": "#c94ab8",
+      "icon": "pi pi-globe",
+      "userId": 1727628326880,
+      "id": 6
+    },
+    {
+      "name": "Bento",
+      "color": "#e34545",
+      "icon": "pi pi-Bento",
+      "userId": 1727628326880,
+      "id": 7
     }
   ],
   "expenses": [

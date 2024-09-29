@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output,SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NewCategorieService, Categorie } from '../../services/new-categorie.service';
+import { NewCategorieService } from './new-categorie.service';
+import { User,GeneralCategory, Categorie } from 'src/app/shared/model.shared';
+
 
 @Component({
   selector: 'app-modal-form',
@@ -24,21 +26,23 @@ export class ModalFormComponent {
       userId: [null, Validators.required] 
     });
   }
-  ngOnInit(): void {
-    console.log('userId dans modal-form 1 test', this.userId);
-    this.categoryForm.patchValue({ userId: this.userId }); // Mettre à jour userId dans le formulaire
-  }
+  ngOnInit(): void {    
+    this.categoryForm.patchValue({ userId: this.userId }); 
+    }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['userId'] && !changes['userId'].isFirstChange()) {
-      console.log('userId changé:', this.userId);
-      this.categoryForm.patchValue({ userId: this.userId }); // Mettre à jour userId dans le formulaire lors des changements
+    if (changes['userId'] && !changes['userId'].isFirstChange()) {      
+      this.categoryForm.patchValue({ userId: this.userId });
     }
   }
-
+ 
   onSubmit(): void {
-    console.log('userId dans modal-form', this.categoryForm.value, this.userId);
+    
     if (this.categoryForm.valid) {
+    
+      const iconValue = this.categoryForm.get('icon')?.value;
+      this.categoryForm.patchValue({ icon: `pi pi-${iconValue}` });
+
       const newCategory: Categorie = { ...this.categoryForm.value };
       this.categorieService.AddNewCategorie(newCategory).subscribe(
         () => {

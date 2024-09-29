@@ -1,20 +1,27 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <h2>{{'CATEGORY.CATEGORY_LIST' | translate}}</h2>
+  <h1 class="category-list-title">{{'CATEGORY.CATEGORY_LIST' | translate}}</h1>
   <button class="add-category-button" (click)="openAddCategoryModal()">{{'CATEGORY.ADD_CATEGORY' | translate}}</button>
 </div>
 <br>
 <br>
-<div *ngIf="tabCategories.length > 0">
-  <ul class="category-list">
-    <li *ngFor="let categorie of tabCategories" class="category-item">
+
+<div *ngIf="tabCategories.length > 0 || Usercategories.length > 0">
+  <ul class="category-list" style="display: flex; flex-wrap: wrap;">
+    <li *ngFor="let categorie of tabCategories" class="category-item" style="margin-right: 10px;">
       <div class="icon-container" [ngStyle]="{'background-color': categorie.color}">
-        <i class="pi pi-{{categorie.icon}} icon-large" style="width: 100%;"></i>
+        <i class="{{categorie.icon}} icon-large" style="width: 100%;"></i>
+      </div>
+      <span class="category-name">{{ categorie.name }}</span>
+    </li>
+    <li *ngFor="let categorie of Usercategories" class="category-item" style="margin-right: 10px;">
+      <div class="icon-container" [ngStyle]="{'background-color': categorie.color}">
+        <i class="{{categorie.icon}} icon-large" style="width: 100%;"></i>
       </div>
       <span class="category-name">{{ categorie.name }}</span>
     </li>
   </ul>
 </div>
-<div *ngIf="tabCategories.length === 0">
+<div *ngIf="tabCategories.length === 0 && Usercategories.length === 0">
   <p>{{'CATEGORY.NO_CATEGORY_AVAILABLE' | translate}}</p>
 </div>
 <app-modal-form [userId]="userId" (categoryAdded)="onCategoryAdded($event)"></app-modal-form>

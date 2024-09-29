@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { User,GeneralCategory,Categorie } from 'src/app/shared/model.shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewCategorieService {
-  private url = 'http://localhost:3000/categories';
+  private url = ' http://localhost:3000/userCategories';
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +22,12 @@ export class NewCategorieService {
       switchMap(newCategory => this.http.post<any>(this.url, newCategory)),
       catchError(this.handleError)
     );
+  }
+  GetAllCategories(): Observable<GeneralCategory[]>{
+    return this.http.get<GeneralCategory[]>('http://localhost:3000/generalCategories');
+  }
+  getCategoriesByIdUser(id: number): Observable<any>{
+    return this.http.get<any>('http://localhost:3000/userCategories/?userId='+id);
   }
 
   private getCategories(): Observable<Categorie[]> {
@@ -48,10 +55,3 @@ export class NewCategorieService {
   }
 }
 
-export interface Categorie {
-  id?: number;
-  name: string;
-  color: string;
-  icon?: string;
-  userId?: number;
-}

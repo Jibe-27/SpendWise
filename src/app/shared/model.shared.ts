@@ -24,3 +24,16 @@ export interface Category {
   color: string;
   icon: string;
 }
+export interface GeneralCategory {
+  id: number;
+  name: string;
+  color: string;
+  icon: string;
+}
+export interface Categorie {
+  id?: number;
+  name: string;
+  color: string;
+  icon?: string;
+  userId?: number;
+}
