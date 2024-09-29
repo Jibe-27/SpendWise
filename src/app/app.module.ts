@@ -28,6 +28,10 @@ import { HeaderComponent } from './header/header.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { LanguageComponent } from './shared/components/language/language.component';
 import { ExpenseCardComponent } from './expense-card/expense-card.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
+import { ExpenseTableComponent } from './expense-table/expense-table.component';
+import { AddExpenseDialogComponent } from './add-expense-dialog/add-expense-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +52,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     AuthenticatedLayoutComponent,
     LanguageComponent,
-    ExpenseCardComponent
+    ExpenseCardComponent,
+    LineChartComponent,
+    DoughnutChartComponent,
+    ExpenseTableComponent,
+    AddExpenseDialogComponent
   ],
   imports: [
     BrowserModule,

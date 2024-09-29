@@ -1,0 +1,21 @@
+<!-- expense-table.component.html -->
+<div class="card bg-white p-4 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES' | translate }}</h3>
+    <p-table [value]="expenses" [scrollable]="true" [scrollHeight]="'200px'">
+      <ng-template pTemplate="body" let-expense let-rowIndex="rowIndex">
+        <tr>
+          <td class="py-2">{{ expense.store }}</td>
+          <td class="py-2" highlightImportantExpense [expenseAmount]="expense.amount" [seuil]="25">{{ expense.amount | currency:'EUR' }}</td>
+          <td class="py-2">{{ expense.datetime | relativeDate }}</td>
+          <td class="py-2">
+            <button 
+              class="bg-primary-500 text-white px-2 py-1 rounded-md hover:bg-primary-600 transition duration-300"
+              (click)="onViewDetails(expense)"
+            >
+              Voir Détails
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
