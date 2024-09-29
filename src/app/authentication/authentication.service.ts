@@ -21,6 +21,9 @@ export class AuthService {
     const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user) : null;
   }
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${API_BASE_URL}/users/${id}`);
+  }
   login(user: User): Observable<User> {
     return this.http
       .post<User>(this.apiUrl + 'login', {

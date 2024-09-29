@@ -12,7 +12,7 @@
         <div class="w-full">
           <div class="card bg-green-400 p-8 rounded-lg flex flex-col items-center justify-center">
             <h3 class="text-2xl font-bold mb-2">{{ 'HOME.REVENUES' | translate }}</h3>
-            <p class="text-3xl font-bold">500 €</p> <!-- Remplacer par une variable si nécessaire todo: -->
+            <p class="text-3xl font-bold">{{ user?.budget }} €</p> <!-- Remplacer par une variable si nécessaire todo: -->
           </div>
         </div>
       </div>
@@ -72,33 +72,82 @@
     </div>
   </div>
 
-  <!-- Modal Dialog -->
-  <p-dialog header="{{ 'HOME.ADD_EXPENSE' | translate }}" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: '30vw'}">
-    <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
-      <div class="p-fluid">
-        <div class="p-field">
-          <label for="category">{{ 'HOME.CATEGORY' | translate }}</label>
-          <select id="category" pInputText formControlName="category">
-            <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
-          </select>
-        </div>
-        <div class="p-field">
-          <label for="store">{{ 'EXPENSE.STORE' | translate }}</label>
-          <input id="store" type="text" pInputText formControlName="store" />
-        </div>
-        <div class="p-field">
-          <label for="amount">{{ 'HOME.AMOUNT' | translate }}</label>
-          <input id="amount" type="number" pInputText formControlName="amount" />
-        </div>
-        <div class="p-field">
-          <label for="description">{{ 'EXPENSE.DESCRIPTION' | translate }}</label>
-          <input id="description" type="text" pInputText formControlName="description" />
-        </div>
-      </div>
-      <div class="p-dialog-footer">
-        <button pButton type="button" label="{{ 'COMMON.CANCEL' | translate }}" icon="pi pi-times" (click)="displayModal=false"></button>
-        <button pButton type="submit" label="{{ 'COMMON.ADD' | translate }}" icon="pi pi-check" [disabled]="expenseForm.invalid"></button>
-      </div>
-    </form>
-  </p-dialog>
+ <!-- Modal Dialog -->
+<p-dialog 
+header="{{ 'HOME.ADD_EXPENSE' | translate }}" 
+[(visible)]="displayModal" 
+[modal]="true" 
+[closable]="false" 
+[style]="{width: '30vw'}"
+class="p-5 bg-primary-50 border-primary-900 shadow-lg rounded-md"
+>
+<form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
+  <div class="p-fluid space-y-4">
+    <div class="p-field">
+      <label for="category" class="block text-primary-700">{{ 'HOME.CATEGORY' | translate }}</label>
+      <select 
+        id="category" 
+        pInputText 
+        formControlName="category" 
+        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
+      >
+        <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <div class="p-field">
+      <label for="store" class="block text-primary-700">{{ 'EXPENSE.STORE' | translate }}</label>
+      <input 
+        id="store" 
+        type="text" 
+        pInputText 
+        formControlName="store" 
+        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="amount" class="block text-primary-700">{{ 'HOME.AMOUNT' | translate }}</label>
+      <input 
+        id="amount" 
+        type="number" 
+        pInputText 
+        formControlName="amount" 
+        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="description" class="block text-primary-700">{{ 'EXPENSE.DESCRIPTION' | translate }}</label>
+      <input 
+        id="description" 
+        type="text" 
+        pInputText 
+        formControlName="description" 
+        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
+      />
+    </div>
+  </div>
+
+  <div class="p-dialog-footer flex justify-end space-x-3 mt-4">
+    <button 
+      pButton 
+      type="button" 
+      label="{{ 'COMMON.CANCEL' | translate }}" 
+      icon="pi pi-times" 
+      class="px-4 py-2 bg-gray-200 text-primary-700 hover:bg-gray-300 rounded-md"
+      (click)="displayModal=false"
+    ></button>
+    <button 
+      pButton 
+      type="submit" 
+      label="{{ 'COMMON.ADD' | translate }}" 
+      icon="pi pi-check" 
+      class="px-4 py-2 bg-primary text-white hover:bg-primary-600 rounded-md"
+      [disabled]="expenseForm.invalid"
+    ></button>
+  </div>
+</form>
+</p-dialog>
+
 </div>

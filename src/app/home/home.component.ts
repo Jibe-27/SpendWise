@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExpenseService } from '../expense/expense.service';
-import { Expense, Category } from '../shared/model.shared';
+import { Expense, Category, User } from '../shared/model.shared';
+import { AuthService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,13 @@ export class HomeComponent implements OnInit {
   totalExpenses: number = 0;
   displayModal: boolean = false;
   expenseForm: FormGroup;
-  private userId: number = 1; // Assuming user ID is 1 for this example
+  user: User | null = null;
 
-  constructor(private fb: FormBuilder, private expenseService: ExpenseService) {
+  constructor(
+    private fb: FormBuilder,
+    private expenseService: ExpenseService,
+    private authService: AuthService
+  ) {
     this.expenseForm = this.fb.group({
       category: ['', Validators.required],
       store: ['', Validators.required],
@@ -28,28 +33,43 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadExpenses();
-    this.loadCategories();
-    this.initializeChartData();
+    const currentUser = this.authService.getUser();
+    if (currentUser && currentUser.id) {
+      this.authService
+        .getUserById(currentUser.id.toString())
+        .subscribe((user) => {
+          this.user = user;
+          console.log('Current User:', this.user.name, this.user.budget);
+          this.loadExpenses();
+          this.loadCategories();
+        });
+    } else {
+      console.log('No user is currently logged in.');
+    }
   }
 
   private loadExpenses(): void {
-    this.expenseService.getExpenses(this.userId).subscribe((expenses) => {
-      this.expenses = expenses;
-      console.log(expenses)
-      this.calculateTotalExpenses();
-    });
+    if (this.user) {
+      this.expenseService.getExpenses(this.user.id).subscribe((expenses) => {
+        this.expenses = expenses;
+        console.log(expenses);
+        this.calculateTotalExpenses();
+        this.initializeChartData();
+      });
+    }
   }
 
   private loadCategories(): void {
-    this.expenseService.getCategories().subscribe((categories) => {
-      this.categories = categories;
-    });
-    this.expenseService
-      .getUserCategories(this.userId)
-      .subscribe((categories) => {
-        this.categories = [...this.categories, ...categories];
+    if (this.user) {
+      this.expenseService.getCategories().subscribe((categories) => {
+        this.categories = categories;
       });
+      this.expenseService
+        .getUserCategories(this.user.id)
+        .subscribe((categories) => {
+          this.categories = [...this.categories, ...categories];
+        });
+    }
   }
 
   private calculateTotalExpenses(): void {
@@ -93,24 +113,28 @@ export class HomeComponent implements OnInit {
   }
 
   addExpense(): void {
-    if (this.expenseForm.valid) {
+    if (this.expenseForm.valid && this.user) {
       const formValues = this.expenseForm.value;
       const selectedCategory = this.categories.find(
         (cat) => cat.name === formValues.category
       );
       const newExpense: Expense = {
-        datetime: new Date().toISOString(),
+        datetime: new Date().toISOString(), // Format datetime as ISO string
         category: selectedCategory!,
         store: formValues.store,
         amount: formValues.amount,
         description: formValues.description,
+        user: this.user.id, // Use userId instead of user
       };
       this.expenseService.addExpense(newExpense).subscribe((expense) => {
         this.expenses.push(expense);
         this.calculateTotalExpenses();
+        this.initializeChartData();
         this.displayModal = false;
         this.expenseForm.reset();
       });
+    } else {
+      console.log('Form is invalid or user is not logged in');
     }
   }
 
