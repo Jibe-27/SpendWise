@@ -43,6 +43,7 @@
 
   <!-- Modal Dialog -->
   <app-add-expense-dialog 
+    *ngIf="displayModal"
     [displayModal]="displayModal" 
     [categories]="categories" 
     (addExpense)="onAddExpense($event)" 
