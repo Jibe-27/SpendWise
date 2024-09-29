@@ -28,6 +28,7 @@ export class AuthenticationComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       const user: User = {
+        id: 0,
         email: this.form.controls['email'].value,
         password: this.form.controls['password'].value,
         name: this.form.controls['name']?.value ?? '',
@@ -80,7 +81,7 @@ export class AuthenticationComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(6),
-          PasswordValidator.strongPassword()
+          PasswordValidator.strongPassword(),
         ]),
         name: new FormControl('', Validators.required),
         budget: new FormControl(0, [Validators.required, Validators.min(0)]),
@@ -91,7 +92,7 @@ export class AuthenticationComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.minLength(6),
-          PasswordValidator.strongPassword()
+          PasswordValidator.strongPassword(),
         ]),
       });
     }
