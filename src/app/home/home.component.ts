@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ExpenseService } from '../expense/expense.service';
 import { Expense, Category, User } from '../shared/model.shared';
 import { AuthService } from '../authentication/authentication.service';
@@ -21,8 +22,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private expenseService: ExpenseService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private expenseService: ExpenseService
   ) {
     this.expenseForm = this.fb.group({
       category: ['', Validators.required],
@@ -119,12 +121,13 @@ export class HomeComponent implements OnInit {
         (cat) => cat.name === formValues.category
       );
       const newExpense: Expense = {
-        datetime: this.formatDate(new Date()), // Format datetime using a custom method
+        id: 0,
+        datetime: this.formatDate(new Date()),
         category: selectedCategory!,
         store: formValues.store,
         amount: formValues.amount,
         description: formValues.description,
-        userId: this.user.id, // Use userId instead of user
+        userId: this.user.id,
       };
       console.log('date:', newExpense.datetime);
       this.expenseService.addExpense(newExpense).subscribe((expense) => {
@@ -139,7 +142,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // Add this method to your HomeComponent class
   private formatDate(date: Date): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -155,7 +157,7 @@ export class HomeComponent implements OnInit {
   }
 
   viewExpenseDetails(expense: Expense): void {
-    // Implement the logic to view expense details
     console.log('Viewing details for expense:', expense);
+    this.router.navigate(['/home/expense', expense.id]);
   }
 }

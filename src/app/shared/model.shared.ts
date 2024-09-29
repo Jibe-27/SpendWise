@@ -12,6 +12,7 @@ export interface User {
 }
 
 export interface Expense {
+  id: number;
   datetime: string;
   category: Category;
   store: string;
