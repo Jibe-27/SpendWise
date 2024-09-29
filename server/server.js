@@ -31,14 +31,14 @@ server.post('/auth/login', (req, res) => {
 
 // Route pour l'enregistrement d'un utilisateur
 server.post('/auth/register', (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, budget } = req.body;
   const db = router.db;
   const newUser = {
     id: Date.now(),
     email,
     password,
     name,
-    budget: 1000, // Valeur par défaut pour le budget
+    budget,
   };
   db.get('users').push(newUser).write();
 
