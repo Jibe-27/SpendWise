@@ -1,7 +1,7 @@
 <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
     <div class="flex justify-between items-center">
       <h3 class="text-xl font-bold">{{ 'HOME.LINE_CHART' | translate }}</h3>
-      <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
+      <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success p-button-rounded p-button-success bg-primary-700 text-white hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 transition duration-300" (click)="showModalDialog()"></button>
     </div>
     <div class="chart-container mt-4 h-full">
       <p-chart type="line" [data]="data" [options]="options" style="height: 100%;"></p-chart>
