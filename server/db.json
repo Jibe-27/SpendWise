@@ -71,8 +71,35 @@
       "icon": "pi pi-globe",
       "userId": 1727628326880,
       "id": 6
+    },
+    {
+      "name": "test",
+      "color": "#f98b8b",
+      "icon": "pi pi-start",
+      "userId": 1727628326880,
+      "id": 7
+    },
+    {
+      "name": "test",
+      "color": "#f98b8b",
+      "icon": "pi pi-star",
+      "userId": 1727628326880,
+      "id": 8
+    },
+    {
+      "name": "bento",
+      "color": "#cb4d4d",
+      "icon": "pi pi-bento",
+      "userId": 1727628326880,
+      "id": 9
+    },
+    {
+      "name": "bento",
+      "color": "#eb0f0f",
+      "icon": "pi pi-bento",
+      "userId": 1727628326880,
+      "id": 10
     }
-    
   ],
   "expenses": [
     {
