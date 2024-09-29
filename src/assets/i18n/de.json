@@ -25,6 +25,7 @@
     "CANCEL": "Abbrechen",
     "DAYS_AGO": "Vor {{count}} Tagen",
     "LOGIN": "Anmelden",
+    "LOGOUT": "Abmelden",
     "REGISTER": "Registrieren",
     "TODAY": "Heute",
     "YESTERDAY": "Gestern"

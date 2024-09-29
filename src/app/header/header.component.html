@@ -19,9 +19,12 @@
             <div class="justify-end items-center w-full lg:flex lg:w-auto lg:order-2" id="mobile-menu-2">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
+                        <app-language></app-language>
+                    </li>
+                    <li>
                         <button (click)="logout()" class="flex items-center text-primary-700">
                             <i class="pi pi-sign-out"></i>
-                            <span class="ml-2">Logout</span>
+                            <span class="ml-2">{{'COMMON.LOGOUT'| translate}}</span>
                         </button>
                     </li>
                 </ul>

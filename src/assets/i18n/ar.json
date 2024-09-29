@@ -25,6 +25,7 @@
     "CANCEL": "إلغاء",
     "DAYS_AGO": "منذ {{count}} أيام",
     "LOGIN": "تسجيل الدخول",
+    "LOGOUT": "تسجيل الخروج",
     "REGISTER": "التسجيل",
     "TODAY": "اليوم",
     "YESTERDAY": "أمس"

@@ -26,6 +26,8 @@ import { RelativeDatePipe } from './shared/relative-date.pipe';
 import { HighlightImportantExpenseDirective } from './shared/highlight-important-expense.directive';
 import { HeaderComponent } from './header/header.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
+import { CategorieComponent } from './categorie/categorie.component';
+import { LanguageComponent } from './shared/components/language/language.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,11 +42,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotificationComponent,
     ModalFormComponent,
     AddCategorieComponent,
+    CategorieComponent,
     ExpenseComponent,
     RelativeDatePipe,
     HighlightImportantExpenseDirective,
     HeaderComponent,
-    AuthenticatedLayoutComponent
+    AuthenticatedLayoutComponent,
+    LanguageComponent
   ],
   imports: [
     BrowserModule,

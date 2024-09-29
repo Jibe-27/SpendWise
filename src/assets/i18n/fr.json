@@ -25,6 +25,7 @@
     "CANCEL": "Annuler",
     "DAYS_AGO": "Il y a {{count}} jours",
     "LOGIN": "Connexion",
+    "LOGOUT":"Déconnexion",
     "REGISTER": "Inscription",
     "TODAY": "Aujourd'hui",
     "YESTERDAY": "Hier"

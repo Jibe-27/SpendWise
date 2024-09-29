@@ -25,6 +25,7 @@
     "CANCEL": "Cancel",
     "DAYS_AGO": "{{count}} days ago",
     "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "REGISTER": "Register",
     "TODAY": "Today",
     "YESTERDAY": "Yesterday"

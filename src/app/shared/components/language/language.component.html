@@ -1,0 +1,8 @@
+<div class="flex justify-center">
+    <div class="flex justify-end items-center w-full">
+        <i class="pi pi-globe"></i>
+        <select class="p-0" (change)="changeLanguage($event)">
+        <option *ngFor="let lang of languages" [value]="lang.code" [selected]="lang.code == selectedLanguage">{{ lang.name }}</option>
+        </select>
+    </div>
+</div>
