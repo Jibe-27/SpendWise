@@ -4,28 +4,21 @@
     <div class="w-full md:w-1/2 pr-0 md:pr-4">
       <div class="flex flex-col space-y-4 mt-20">
         <div class="w-full">
-          <div class="card bg-red-400 p-8 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-2">{{ 'HOME.EXPENSES' | translate }}</h3>
-            <p class="text-3xl font-bold">{{ totalExpenses | currency:'EUR' }}</p>
-          </div>
+          <app-expense-card 
+            title="{{ 'HOME.EXPENSES' | translate }}" 
+            [amount]="totalExpenses" 
+            color="bg-red-400">
+          </app-expense-card>
         </div>
         <div class="w-full">
-          <div class="card bg-green-400 p-8 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-2">{{ 'HOME.REVENUES' | translate }}</h3>
-            <p class="text-3xl font-bold">{{ user?.budget }} €</p> <!-- Remplacer par une variable si nécessaire todo: -->
-          </div>
+          <app-expense-card 
+            title="{{ 'HOME.REVENUES' | translate }}" 
+            [amount]="user?.budget || 0" 
+            color="bg-green-400">
+          </app-expense-card>
         </div>
       </div>
-      
-      <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
-        <div class="flex justify-between items-center">
-          <h3 class="text-xl font-bold">{{ 'HOME.LINE_CHART' | translate }}</h3>
-          <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
-        </div>
-        <div class="chart-container mt-4 h-full">
-          <p-chart type="line" [data]="data" [options]="options" style="height: 100%;"></p-chart>
-        </div>
-      </div>
+      <app-line-chart [data]="data" [options]="options" (showModal)="showModalDialog()"></app-line-chart>
       <div class="card bg-white p-4 rounded-lg shadow-md mt-4">
         <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES_BY_CATEGORY' | translate }}</h3>
         <ul class="max-h-64 overflow-y-auto">
@@ -40,122 +33,19 @@
           </li>
         </ul>
       </div>
-      
     </div>
     <!-- Colonne de droite -->
     <div class="w-full md:w-1/2 pl-0 md:pl-4 mt-4 md:mt-0">
-      <div class="card bg-white p-4 rounded-lg shadow-md mt-12 mb-4">
-        <div class="flex justify-between items-center">
-          <h3 class="text-xl font-bold">{{ 'HOME.DOUGHNUT_CHART' | translate }}</h3>
-          <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showModalDialog()"></button>
-        </div>
-        <div class="chart-container mt-4 h-full">
-          <p-chart type="doughnut" [data]="data" [options]="options" style="height: 50%;"></p-chart>
-          <div class="chart-label">
-            <div>{{ 'HOME.TOTAL' | translate }}</div>
-            <div>{{ totalExpenses | currency:'EUR' }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="card bg-white p-4 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-4">{{ 'HOME.EXPENSES' | translate }}</h3>
-        <p-table [value]="expenses" [scrollable]="true" [scrollHeight]="'200px'">
-          <ng-template pTemplate="body" let-expense let-rowIndex="rowIndex">
-            <tr>
-              <td class="py-2">{{ expense.store }}</td>
-              <td class="py-2" highlightImportantExpense [expenseAmount]="expense.amount" [seuil]="25">{{ expense.amount | currency:'EUR' }}</td>
-              <td class="py-2">{{ expense.datetime | relativeDate }}</td>
-              <td class="py-2">
-                <button 
-                  class="bg-primary-500 text-white px-2 py-1 rounded-md hover:bg-primary-600 transition duration-300"
-                  (click)="viewExpenseDetails(expense)"
-                >
-                  Voir Détails
-                </button>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </div>
-      
-  </div>
-
- <!-- Modal Dialog -->
-<p-dialog 
-header="{{ 'HOME.ADD_EXPENSE' | translate }}" 
-[(visible)]="displayModal" 
-[modal]="true" 
-[closable]="false" 
-[style]="{width: '30vw'}"
-class="p-5 bg-primary-50 border-primary-900 shadow-lg rounded-md"
->
-<form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
-  <div class="p-fluid space-y-4">
-    <div class="p-field">
-      <label for="category" class="block text-primary-700">{{ 'HOME.CATEGORY' | translate }}</label>
-      <select 
-        id="category" 
-        pInputText 
-        formControlName="category" 
-        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
-      >
-        <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
-      </select>
-    </div>
-
-    <div class="p-field">
-      <label for="store" class="block text-primary-700">{{ 'EXPENSE.STORE' | translate }}</label>
-      <input 
-        id="store" 
-        type="text" 
-        pInputText 
-        formControlName="store" 
-        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
-      />
-    </div>
-
-    <div class="p-field">
-      <label for="amount" class="block text-primary-700">{{ 'HOME.AMOUNT' | translate }}</label>
-      <input 
-        id="amount" 
-        type="number" 
-        pInputText 
-        formControlName="amount" 
-        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
-      />
-    </div>
-
-    <div class="p-field">
-      <label for="description" class="block text-primary-700">{{ 'EXPENSE.DESCRIPTION' | translate }}</label>
-      <input 
-        id="description" 
-        type="text" 
-        pInputText 
-        formControlName="description" 
-        class="block w-full p-2 mt-1 border rounded-md focus:ring-primary-500 focus:border-primary-500"
-      />
+      <app-doughnut-chart [data]="data" [options]="options" [totalExpenses]="totalExpenses" (showModal)="showModalDialog()"></app-doughnut-chart>
+      <app-expense-table [expenses]="expenses" (viewDetails)="onViewExpenseDetails($event)"></app-expense-table>
     </div>
   </div>
 
-  <div class="p-dialog-footer flex justify-end space-x-3 mt-4">
-    <button 
-      pButton 
-      type="button" 
-      label="{{ 'COMMON.CANCEL' | translate }}" 
-      icon="pi pi-times" 
-      class="px-4 py-2 bg-gray-200 text-primary-700 hover:bg-gray-300 rounded-md"
-      (click)="displayModal=false"
-    ></button>
-    <button 
-      pButton 
-      type="submit" 
-      label="{{ 'COMMON.ADD' | translate }}" 
-      icon="pi pi-check" 
-      class="px-4 py-2 bg-primary text-white hover:bg-primary-600 rounded-md"
-      [disabled]="expenseForm.invalid"
-    ></button>
-  </div>
-</form>
-</p-dialog>
-
+  <!-- Modal Dialog -->
+  <app-add-expense-dialog 
+    [displayModal]="displayModal" 
+    [categories]="categories" 
+    (addExpense)="onAddExpense($event)" 
+    (closeModal)="onCloseModal()">
+  </app-add-expense-dialog>
 </div>

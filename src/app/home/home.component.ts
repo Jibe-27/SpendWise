@@ -1,3 +1,4 @@
+// home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,6 @@ export class HomeComponent implements OnInit {
   categories: Category[] = [];
   totalExpenses: number = 0;
   displayModal: boolean = false;
-  expenseForm: FormGroup;
   user: User | null = null;
 
   constructor(
@@ -25,14 +25,7 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private expenseService: ExpenseService
-  ) {
-    this.expenseForm = this.fb.group({
-      category: ['', Validators.required],
-      store: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.min(0)]],
-      description: [''],
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     const currentUser = this.authService.getUser();
@@ -114,19 +107,18 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  addExpense(): void {
-    if (this.expenseForm.valid && this.user) {
-      const formValues = this.expenseForm.value;
+  onAddExpense(expense: any): void {
+    if (this.user) {
       const selectedCategory = this.categories.find(
-        (cat) => cat.name === formValues.category
+        (cat) => cat.name === expense.category
       );
       const newExpense: Expense = {
         id: 0,
         datetime: this.formatDate(new Date()),
         category: selectedCategory!,
-        store: formValues.store,
-        amount: formValues.amount,
-        description: formValues.description,
+        store: expense.store,
+        amount: expense.amount,
+        description: expense.description,
         userId: this.user.id,
       };
       console.log('date:', newExpense.datetime);
@@ -135,10 +127,9 @@ export class HomeComponent implements OnInit {
         this.calculateTotalExpenses();
         this.initializeChartData();
         this.displayModal = false;
-        this.expenseForm.reset();
       });
     } else {
-      console.log('Form is invalid or user is not logged in');
+      console.log('User is not logged in');
     }
   }
 
@@ -156,7 +147,11 @@ export class HomeComponent implements OnInit {
     this.displayModal = true;
   }
 
-  viewExpenseDetails(expense: Expense): void {
+  onCloseModal(): void {
+    this.displayModal = false;
+  }
+
+  onViewExpenseDetails(expense: Expense): void {
     console.log('Viewing details for expense:', expense);
     this.router.navigate(['/home/expense', expense.id]);
   }
