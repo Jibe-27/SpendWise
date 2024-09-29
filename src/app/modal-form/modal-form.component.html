@@ -5,15 +5,21 @@
     <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="name">Nom</label>
-        <input id="name" formControlName="name">
+        <input id="name" formControlName="name" placeholder="Nom de la catégorie" required>
+        <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched" class="error-message">
+          Le nom est requis.
+        </div>
       </div>
       <div>
         <label for="color">Couleur</label>
-        <input id="color" type="color" formControlName="color"> 
+        <input id="color" type="color" formControlName="color" placeholder="Couleur de la catégorie" required> 
       </div>
       <div>
         <label for="icon">Icon</label>
-        <input id="icon" type="text" formControlName="icon">
+        <input id="icon" type="text" formControlName="icon" required>
+        <div *ngIf="categoryForm.get('icon')?.invalid && categoryForm.get('icon')?.touched" class="error-message">
+          L'icône est requise.
+        </div>
       </div>
       <div>
         <div>
@@ -24,7 +30,6 @@
         <button type="button" (click)="closeModal()">Annuler</button>
         <button type="submit" [disabled]="categoryForm.invalid">Ajouter</button>
       </div>
-     
     </form>
   </div>
 </div>

@@ -26,22 +26,27 @@ export class ModalFormComponent {
       userId: [null, Validators.required] 
     });
   }
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    
     this.categoryForm.patchValue({ userId: this.userId }); 
     }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['userId'] && !changes['userId'].isFirstChange()) {      
+    if (changes['userId'] && !changes['userId'].isFirstChange()) {
+      
       this.categoryForm.patchValue({ userId: this.userId });
     }
   }
+
  
   onSubmit(): void {
     
-    if (this.categoryForm.valid) {
-    
-      const iconValue = this.categoryForm.get('icon')?.value;
-      this.categoryForm.patchValue({ icon: `pi pi-${iconValue}` });
+    if (this.categoryForm.valid) {    
+      let iconValue = this.categoryForm.get('icon')?.value;
+      iconValue = iconValue?.trim();
+      iconValue = iconValue?.toLowerCase().replace(/\s+/g, '-');
+      iconValue = `pi pi-${iconValue}`;
+      this.categoryForm.patchValue({ icon: iconValue }); 
 
       const newCategory: Categorie = { ...this.categoryForm.value };
       this.categorieService.AddNewCategorie(newCategory).subscribe(

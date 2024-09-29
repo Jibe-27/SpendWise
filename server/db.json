@@ -71,14 +71,8 @@
       "icon": "pi pi-globe",
       "userId": 1727628326880,
       "id": 6
-    },
-    {
-      "name": "Bento",
-      "color": "#e34545",
-      "icon": "pi pi-Bento",
-      "userId": 1727628326880,
-      "id": 7
     }
+    
   ],
   "expenses": [
     {
