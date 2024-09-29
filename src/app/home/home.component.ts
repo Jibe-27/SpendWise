@@ -1,4 +1,3 @@
-// home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,14 +5,32 @@ import { ExpenseService } from '../expense/expense.service';
 import { Expense, Category, User } from '../shared/model.shared';
 import { AuthService } from '../authentication/authentication.service';
 
+export interface ChartData {
+  labels: string[];
+  datasets: Dataset[];
+}
+
+export interface Dataset {
+  data: number[];
+  backgroundColor: string[];
+}
+
+export interface ChartOptions {
+  plugins: {
+    legend: {
+      display: boolean;
+    };
+  };
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  data: any;
-  options: any;
+  data: ChartData = { labels: [], datasets: [] };
+  options: ChartOptions = { plugins: { legend: { display: false } } };
   expenses: Expense[] = [];
   categories: Category[] = [];
   totalExpenses: number = 0;
