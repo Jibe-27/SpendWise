@@ -27,6 +27,7 @@ import { HighlightImportantExpenseDirective } from './shared/highlight-important
 import { HeaderComponent } from './header/header.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { LanguageComponent } from './shared/components/language/language.component';
+import { ExpenseCardComponent } from './expense-card/expense-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HighlightImportantExpenseDirective,
     HeaderComponent,
     AuthenticatedLayoutComponent,
-    LanguageComponent
+    LanguageComponent,
+    ExpenseCardComponent
   ],
   imports: [
     BrowserModule,
