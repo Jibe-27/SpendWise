@@ -17,8 +17,7 @@ export class HomeComponent implements OnInit {
   totalExpenses: number = 0;
   displayModal: boolean = false;
   expenseForm: FormGroup;
-  private user: User | null = null;
-  userBudget: number | null = null;
+  user: User | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -34,17 +33,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
-    if (this.user) {
-      this.userBudget = this.user.budget;
-      console.log('Current User:', this.user.name, this.user.budget);
-      this.loadExpenses();
-      this.loadCategories();
+    const currentUser = this.authService.getUser();
+    if (currentUser && currentUser.id) {
+      this.authService
+        .getUserById(currentUser.id.toString())
+        .subscribe((user) => {
+          this.user = user;
+          console.log('Current User:', this.user.name, this.user.budget);
+          this.loadExpenses();
+          this.loadCategories();
+        });
+    } else {
+      console.log('No user is currently logged in.');
     }
-  }
-
-  getUserid(): string | null {
-    return this.user ? this.user.name.toString() : null;
   }
 
   private loadExpenses(): void {
@@ -112,18 +113,18 @@ export class HomeComponent implements OnInit {
   }
 
   addExpense(): void {
-    if (this.expenseForm.valid) {
+    if (this.expenseForm.valid && this.user) {
       const formValues = this.expenseForm.value;
       const selectedCategory = this.categories.find(
         (cat) => cat.name === formValues.category
       );
       const newExpense: Expense = {
-        datetime: new Date().toISOString(),
+        datetime: new Date().toISOString(), // Format datetime as ISO string
         category: selectedCategory!,
         store: formValues.store,
         amount: formValues.amount,
         description: formValues.description,
-        user: this.user!, // Use the user in the new expense
+        user: this.user.id, // Use userId instead of user
       };
       this.expenseService.addExpense(newExpense).subscribe((expense) => {
         this.expenses.push(expense);
@@ -132,6 +133,8 @@ export class HomeComponent implements OnInit {
         this.displayModal = false;
         this.expenseForm.reset();
       });
+    } else {
+      console.log('Form is invalid or user is not logged in');
     }
   }
 
