@@ -7,7 +7,7 @@ SpendWise est une application de gestion des dépenses qui permet aux utilisateu
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
 - [Node.js](https://nodejs.org/) (version 16 ou supérieure)
-- [Angular CLI](https://angular.io/cli) (version 16)
+- [Angular](https://v16.angular.io/docs) (version 16)
 
 ## Installation
 
@@ -25,7 +25,7 @@ Le démarrage du projet se fait en deux étapes :
 
 1. **Démarrer le backend (serveur JSON)** :
    Depuis la racine du projet, lancez le serveur d'API JSON avec la commande suivante :
-   
+
    ```bash
    node server/server.js
    ```
@@ -48,5 +48,3 @@ Une fois les deux serveurs démarrés, ouvrez votre navigateur et accédez à l'
 - [Jean-Baptiste OMILUS](https://github.com/Jibe-27)
 - [Farid MAMAN](https://github.com/farid841)
 - [Oumou Khairy Gueye](https://github.com/oguey)
-
-
