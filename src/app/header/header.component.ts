@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   userEmail: string | null = null;
+  isMenuOpen: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -26,5 +27,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/auth']);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
