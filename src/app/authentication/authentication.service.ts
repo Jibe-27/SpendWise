@@ -17,6 +17,10 @@ export class AuthService {
       return false;
     }
   }
+  getUser(): User | null {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
+  }
   login(user: User): Observable<User> {
     return this.http
       .post<User>(this.apiUrl + 'login', {
