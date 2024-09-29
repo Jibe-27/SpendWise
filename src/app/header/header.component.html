@@ -21,6 +21,9 @@
                     <li>
                         <app-language></app-language>
                     </li>
+                    <li *ngIf="userEmail" class="inline-block bg-primary text-white px-3 py-1 rounded-full">
+                        {{ userEmail }}
+                      </li>
                     <li>
                         <button (click)="logout()" class="flex items-center text-primary-700">
                             <i class="pi pi-sign-out"></i>
