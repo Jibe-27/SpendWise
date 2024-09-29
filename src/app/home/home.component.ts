@@ -119,13 +119,14 @@ export class HomeComponent implements OnInit {
         (cat) => cat.name === formValues.category
       );
       const newExpense: Expense = {
-        datetime: new Date().toISOString(), // Format datetime as ISO string
+        datetime: this.formatDate(new Date()), // Format datetime using a custom method
         category: selectedCategory!,
         store: formValues.store,
         amount: formValues.amount,
         description: formValues.description,
-        user: this.user.id, // Use userId instead of user
+        userId: this.user.id, // Use userId instead of user
       };
+      console.log('date:', newExpense.datetime);
       this.expenseService.addExpense(newExpense).subscribe((expense) => {
         this.expenses.push(expense);
         this.calculateTotalExpenses();
@@ -138,7 +139,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // Add this method to your HomeComponent class
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
+  }
+
   showModalDialog(): void {
     this.displayModal = true;
+  }
+
+  viewExpenseDetails(expense: Expense): void {
+    // Implement the logic to view expense details
+    console.log('Viewing details for expense:', expense);
   }
 }

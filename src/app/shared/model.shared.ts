@@ -17,7 +17,7 @@ export interface Expense {
   store: string;
   amount: number;
   description?: string;
-  user: number;
+  userId: number;
 }
 
 export interface Category {
